@@ -44,9 +44,11 @@ class RegisterController extends GetxController {
             "email": emailC.text,
             "uid": uid,
             "createAt": DateTime.now().toIso8601String(),
-            "photo": "",
             "type": typeC,
             "status": "Unavalible",
+            "photo": "",
+            "dateOfBirth": "",
+            "kota": "",
           });
           await userCredential.user!.sendEmailVerification();
           print("REGISTER BERHASIL");

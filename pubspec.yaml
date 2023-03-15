@@ -3,17 +3,18 @@ version: 1.0.0+1
 publish_to: none
 description: A new Flutter project.
 environment:
-  sdk: '>=2.19.0 <3.0.0'
+  sdk: ">=2.19.0 <3.0.0"
 
 dependencies:
-  cloud_firestore: ^4.4.4
+  cloud_firestore: ^4.4.2
   cupertino_icons: ^1.0.2
-  firebase_auth: ^4.2.10
-  firebase_core: 2.7.1
+  firebase_auth: ^4.2.9
+  firebase_core: ^2.6.1
   flutter:
     sdk: flutter
   get: 4.6.5
   google_fonts: ^4.0.3
+  intl: ^0.17.0
   lottie: ^2.2.0
 
 dev_dependencies:
