@@ -86,10 +86,5 @@ class AppPages {
       page: () => const CsMyProfileView(),
       binding: CsMyProfileBinding(),
     ),
-    GetPage(
-      name: _Paths.CS_EDIT_PROFILE,
-      page: () => CsEditProfileView(),
-      binding: CsEditProfileBinding(),
-    ),
   ];
 }

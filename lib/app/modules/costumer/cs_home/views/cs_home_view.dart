@@ -73,7 +73,7 @@ class CsHomeView extends GetView<CsHomeController> {
                   width: double.infinity,
                   color: bgColor1,
                   child: SelectDoctorView(
-                    doctorName: "${item["full_name"]}",
+                    doctorName: "${item["fullName"]}",
                     specialist: "${item["email"]}",
                   ),
                 );

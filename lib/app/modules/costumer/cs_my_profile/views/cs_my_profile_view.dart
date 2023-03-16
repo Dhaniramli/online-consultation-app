@@ -1,8 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
-
 import '../../../../../theme.dart';
 import '../../../../data/app_session.dart';
 import '../../cs_edit_profile/views/cs_edit_profile_view.dart';
@@ -102,8 +100,8 @@ class CsMyProfileView extends GetView<CsMyProfileController> {
                       ),
                       const SizedBox(height: 5),
                       Text(
-                        "${item["fullName"]}" != null
-                            ? "${item["fullName"]}"
+                        "${item["dateOfBirth"]}" != null
+                            ? "${item["dateOfBirth"]}"
                             : "Belum diisi",
                         style: textStyleBlack.copyWith(fontSize: 13),
                       ),
@@ -116,8 +114,8 @@ class CsMyProfileView extends GetView<CsMyProfileController> {
                       ),
                       const SizedBox(height: 5),
                       Text(
-                        "${item["fullName"]}" != null
-                            ? "${item["fullName"]}"
+                        "${item["jender"]}" != null
+                            ? "${item["jender"]}"
                             : "Belum diisi",
                         style: textStyleBlack.copyWith(fontSize: 13),
                       ),
@@ -130,8 +128,8 @@ class CsMyProfileView extends GetView<CsMyProfileController> {
                       ),
                       const SizedBox(height: 5),
                       Text(
-                        "${item["fullName"]}" != null
-                            ? "${item["fullName"]}"
+                        "${item["kota"]}" != null
+                            ? "${item["kota"]}"
                             : "Belum diisi",
                         style: textStyleBlack.copyWith(fontSize: 13),
                       ),
@@ -145,7 +143,7 @@ class CsMyProfileView extends GetView<CsMyProfileController> {
                   margin: const EdgeInsets.only(right: 15, left: 15),
                   child: TextButton(
                       onPressed: () {
-                        Get.to(() => CsEditProfileView());
+                        Get.to(() => CsEditProfileView(emailV: item["email"],));
                       },
                       style: TextButton.styleFrom(
                           backgroundColor: primaryColor,

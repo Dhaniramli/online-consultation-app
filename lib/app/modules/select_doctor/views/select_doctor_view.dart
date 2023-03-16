@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
-
 import '../../../../theme.dart';
 import '../controllers/select_doctor_controller.dart';
 
@@ -10,7 +8,7 @@ class SelectDoctorView extends GetView<SelectDoctorController> {
   final String specialist;
   // final double? harga;
 
-  SelectDoctorView({
+  const SelectDoctorView({
     super.key,
     required this.doctorName,
     required this.specialist,

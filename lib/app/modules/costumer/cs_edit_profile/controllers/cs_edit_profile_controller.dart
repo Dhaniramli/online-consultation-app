@@ -15,21 +15,40 @@ class CsEditProfileController extends GetxController {
   TextEditingController kotaC = TextEditingController();
   TextEditingController noTelponC = TextEditingController();
 
-  int jenderC = 0;
-
-  void setGender(int value) {
-    jenderC = value; // set value jenderC
+  late String emailC;
+  @override
+  void onInit() {
+    super.onInit();
+    emailC = Get.parameters['emailV'] ?? '';
   }
 
   int valueC = 1;
+  late String jenderC;
+  void setGender(int value) {
+    print("Jender ${value}");
+    if (value == 1) {
+      jenderC = 'Laki - Laki';
+    } else if (value == 2) {
+      jenderC = 'Perempuan';
+    } else {
+      jenderC = 'Laki - Laki';
+    }
+  }
+
 
   onUpdate() async {
-    await _firestore.collection("users").doc(currentUser).update({
-      "photo": photoC,
-      "fullName": fullNameC,
-      "dateOfBirth": dateC,
-      "kota": kotaC,
-      "noTelpon": noTelponC,
-    });
+    try {
+      await _firestore.collection("users").doc(emailC).update({
+        "photo": photoC.text,
+        "fullName": fullNameC.text,
+        "dateOfBirth": dateC.text,
+        "kota": kotaC.text,
+        "jender": jenderC,
+        "noTelpon": noTelponC.text,
+      });
+      Get.back();
+    } catch (err) {
+      Get.snackbar("Terjadi kesalahan", "Tidak dapat mengedit profil");
+    }
   }
 }

@@ -33,26 +33,28 @@ class _CsButtonRowState extends State<CsButtonRow> {
 
   @override
   Widget build(BuildContext context) {
-    return TextButton(
-        onPressed: () {
-          bool selected = widget.value != widget.groupValue;
-          if (selected) {
-            widget.onChanged!(widget.value);
-            controller.setGender(widget.value);
-          }
-        },
-        style: TextButton.styleFrom(
-            padding: const EdgeInsets.symmetric(vertical: 19, horizontal: 48),
-            backgroundColor: widget.value == widget.groupValue
-                ? widget.selectColor
-                : widget.container,
-            shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(8))),
-        child: Text(
-          widget.text,
-          style: widget.value == widget.groupValue
-              ? textWhiteStyle.copyWith(fontSize: 16, fontWeight: semiBold)
-              : textStyleGrey.copyWith(fontSize: 16, fontWeight: semiBold),
-        ));
+    return Expanded(
+      child: TextButton(
+          onPressed: () {
+            bool selected = widget.value != widget.groupValue;
+            if (selected) {
+              widget.onChanged!(widget.value);
+              controller.setGender(widget.value);
+            }
+          },
+          style: TextButton.styleFrom(
+              padding: const EdgeInsets.symmetric(vertical: 19),
+              backgroundColor: widget.value == widget.groupValue
+                  ? widget.selectColor
+                  : widget.container,
+              shape:
+                  RoundedRectangleBorder(borderRadius: BorderRadius.circular(8))),
+          child: Text(
+            widget.text,
+            style: widget.value == widget.groupValue
+                ? textWhiteStyle.copyWith(fontSize: 16, fontWeight: semiBold)
+                : textStyleGrey.copyWith(fontSize: 16, fontWeight: semiBold),
+          )),
+    );
   }
 }
