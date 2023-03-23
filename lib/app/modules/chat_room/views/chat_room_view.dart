@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -100,6 +102,7 @@ class ChatRoomView extends GetView<ChatRoomController> {
                     borderRadius: BorderRadius.circular(8)),
                 child: Center(
                   child: TextFormField(
+                    autocorrect: false,
                     controller: controller.message,
                     decoration: const InputDecoration.collapsed(
                         hintText: 'Ketik Pesan....'),
@@ -135,7 +138,12 @@ class ChatRoomView extends GetView<ChatRoomController> {
             print(snapshot.data);
             if (snapshot.connectionState == ConnectionState.active) {
               var allData = snapshot.data?.docs.length;
+              Timer(
+                  Duration.zero,
+                  () => controller.scrollC
+                      .jumpTo(controller.scrollC.position.maxScrollExtent));
               return ListView.builder(
+                  controller: controller.scrollC,
                   itemCount: allData,
                   itemBuilder: (context, index) {
                     Map<String, dynamic> map = snapshot.data?.docs[index].data()
@@ -200,12 +208,12 @@ Widget messages(BuildContext context, Map<String, dynamic> map) {
             ),
           ],
         ),
-        SizedBox(height: 2),
-        Text(
-          // "10.00",
-          "${controller.jam("${map["time"]}")}",
-          style: textStyleBlack.copyWith(fontSize: 11),
-        ),
+        // SizedBox(height: 2),
+        // Text(
+        //   // "10.00",
+        //   "${controller.jam("${map["time"]}")}",
+        //   style: textStyleBlack.copyWith(fontSize: 11),
+        // ),
       ],
     ),
   );

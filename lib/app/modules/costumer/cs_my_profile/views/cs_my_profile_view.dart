@@ -100,9 +100,9 @@ class CsMyProfileView extends GetView<CsMyProfileController> {
                       ),
                       const SizedBox(height: 5),
                       Text(
-                        "${item["dateOfBirth"]}" != null
+                        item["dateOfBirth"] != null
                             ? "${item["dateOfBirth"]}"
-                            : "Belum diisi",
+                            : "",
                         style: textStyleBlack.copyWith(fontSize: 13),
                       ),
                       const SizedBox(height: 15),
@@ -114,9 +114,9 @@ class CsMyProfileView extends GetView<CsMyProfileController> {
                       ),
                       const SizedBox(height: 5),
                       Text(
-                        "${item["jender"]}" != null
+                        item["jender"] != null
                             ? "${item["jender"]}"
-                            : "Belum diisi",
+                            : "",
                         style: textStyleBlack.copyWith(fontSize: 13),
                       ),
                       const SizedBox(height: 15),
@@ -128,9 +128,9 @@ class CsMyProfileView extends GetView<CsMyProfileController> {
                       ),
                       const SizedBox(height: 5),
                       Text(
-                        "${item["kota"]}" != null
+                        item["kota"] != null
                             ? "${item["kota"]}"
-                            : "Belum diisi",
+                            : "",
                         style: textStyleBlack.copyWith(fontSize: 13),
                       ),
                     ],
@@ -143,7 +143,9 @@ class CsMyProfileView extends GetView<CsMyProfileController> {
                   margin: const EdgeInsets.only(right: 15, left: 15),
                   child: TextButton(
                       onPressed: () {
-                        Get.to(() => CsEditProfileView(emailV: item["email"],));
+                        Get.to(() => CsEditProfileView(
+                              emailV: item["email"],
+                            ));
                       },
                       style: TextButton.styleFrom(
                           backgroundColor: primaryColor,
