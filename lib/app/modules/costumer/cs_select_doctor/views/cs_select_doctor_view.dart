@@ -1,24 +1,60 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../../theme.dart';
-import '../controllers/select_doctor_controller.dart';
+import '../../../../../theme.dart';
+import '../../cs_detail_doctor/views/cs_detail_doctor_view.dart';
+import '../controllers/cs_select_doctor_controller.dart';
 
-class SelectDoctorView extends GetView<SelectDoctorController> {
+class CsSelectDoctorView extends StatefulWidget {
   final String doctorName;
   final String specialist;
+  final String email;
   // final double? harga;
 
-  const SelectDoctorView({
+  const CsSelectDoctorView({
     super.key,
     required this.doctorName,
     required this.specialist,
+    required this.email,
     // this.harga,
   });
 
   @override
+  State<CsSelectDoctorView> createState() => _CsSelectDoctorViewState();
+}
+
+class _CsSelectDoctorViewState extends State<CsSelectDoctorView> {
+  @override
   Widget build(BuildContext context) {
+    final FirebaseFirestore firestore = FirebaseFirestore.instance;
+    Map<String, dynamic>? userMap;
+    // final controller = Get.put(CsSelectDoctorController());
+    // controller.namaDokterC = widget.doctorName;
+
     return GestureDetector(
-      onTap: () {},
+      onTap: () async {
+        await firestore
+            .collection('users')
+            .where("fullName", isEqualTo: widget.doctorName)
+            .get()
+            .then((value) {
+          setState(() {
+            userMap = value.docs[0].data();
+          });
+          print(userMap);
+        });
+
+        String roomId = userMap?['email'] ?? "";
+
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (_) => CsDetailDoctorView(
+              userMap: userMap,
+              emailDetail: widget.email,
+            ),
+          ),
+        );
+      },
       child: Container(
         margin: const EdgeInsets.only(top: 17),
         padding: const EdgeInsets.all(10),
@@ -50,7 +86,7 @@ class SelectDoctorView extends GetView<SelectDoctorController> {
                     height: 5,
                   ),
                   Text(
-                    'Dr. Ronald Richard',
+                    widget.doctorName,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: textStyleBlack.copyWith(
@@ -59,8 +95,8 @@ class SelectDoctorView extends GetView<SelectDoctorController> {
                   const SizedBox(height: 10),
                   Text(
                     'Spesialis Kulit',
-                    style:
-                        textStyleBlack.copyWith(fontSize: 11, fontWeight: medium),
+                    style: textStyleBlack.copyWith(
+                        fontSize: 11, fontWeight: medium),
                   ),
                   Row(
                     mainAxisSize: MainAxisSize.min,

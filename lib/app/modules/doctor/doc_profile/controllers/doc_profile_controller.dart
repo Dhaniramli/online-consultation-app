@@ -8,6 +8,6 @@ class DocProfileController extends GetxController {
 
   Future<void> logOut() async {
     await _auth.signOut();
-    Get.offAllNamed(Routes.LOGIN);
+    Get.offAllNamed(Routes.SELECTUSERS);
   }
 }

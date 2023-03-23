@@ -21,6 +21,9 @@ abstract class Routes {
   static const EDIT_PROFILE = _Paths.EDIT_PROFILE;
   static const CS_MY_PROFILE = _Paths.CS_MY_PROFILE;
   static const CS_EDIT_PROFILE = _Paths.CS_EDIT_PROFILE;
+  static const CHAT_ROOM = _Paths.CHAT_ROOM;
+  static const SELECT_CHAT = _Paths.SELECT_CHAT;
+  static const CS_DETAIL_DOCTOR = _Paths.CS_DETAIL_DOCTOR;
 }
 
 abstract class _Paths {
@@ -43,4 +46,7 @@ abstract class _Paths {
   static const EDIT_PROFILE = '/edit-profile';
   static const CS_MY_PROFILE = '/cs-my-profile';
   static const CS_EDIT_PROFILE = '/cs-edit-profile';
+  static const CHAT_ROOM = '/chat-room';
+  static const SELECT_CHAT = '/select-chat';
+  static const CS_DETAIL_DOCTOR = '/cs-detail-doctor';
 }

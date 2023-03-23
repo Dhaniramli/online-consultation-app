@@ -32,20 +32,21 @@ class MyApp extends StatelessWidget {
           initialRoute: Routes.SELECTUSERS,
           getPages: AppPages.routes,
         );
-        
+
         // if (snapshot.hasError) {
         //   return ErrorView();
         // }
 
         // if (snapshot.connectionState == ConnectionState.done) {
         //   return FutureBuilder(
-        //     future: Future.delayed(const Duration(seconds: 3)),
+        //     future: Future.delayed(const Duration(seconds: 5)),
         //     builder: (context, snapshot) {
         //       if (snapshot.connectionState == ConnectionState.done) {
         //         return GetMaterialApp(
         //           debugShowCheckedModeBanner: false,
         //           title: "Online Consultation App",
-        //           initialRoute: authC.isAuth.isTrue ? Routes.HOME : Routes.SELECTUSERS,
+        //           initialRoute:
+        //               authC.isAuth.isTrue ? Routes.HOME : Routes.SELECTUSERS,
         //           getPages: AppPages.routes,
         //         );
         //       }

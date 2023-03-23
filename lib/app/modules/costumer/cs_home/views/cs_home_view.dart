@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../../../theme.dart';
-import '../../../select_doctor/views/select_doctor_view.dart';
+import '../../cs_select_doctor/views/cs_select_doctor_view.dart';
 import '../controllers/cs_home_controller.dart';
 
 class CsHomeView extends GetView<CsHomeController> {
@@ -72,9 +72,10 @@ class CsHomeView extends GetView<CsHomeController> {
                 return Container(
                   width: double.infinity,
                   color: bgColor1,
-                  child: SelectDoctorView(
+                  child: CsSelectDoctorView(
                     doctorName: "${item["fullName"]}",
                     specialist: "${item["email"]}",
+                    email: "${item["email"]}",
                   ),
                 );
               },

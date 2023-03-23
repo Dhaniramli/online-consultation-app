@@ -50,6 +50,12 @@ class RegisterController extends GetxController {
             "dateOfBirth": "",
             "kota": "",
           });
+
+          await _firestore
+              .collection("users")
+              .doc(emailC.text)
+              .collection("chats");
+
           await userCredential.user!.sendEmailVerification();
           print("REGISTER BERHASIL");
           isLoadingC = false;

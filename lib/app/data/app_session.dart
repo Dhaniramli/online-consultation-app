@@ -7,9 +7,19 @@ import 'package:firebase_core/firebase_core.dart';
 class AppSession {}
 
 get currentUser {
-  return FirebaseAuth.instance.currentUser;
+  return FirebaseAuth.instance.currentUser?.email;
 }
 
+// String currentUser = FirebaseAuth.instance.currentUser.email;
+
 DocumentReference get userCollection {
-  return FirebaseFirestore.instance.collection("users").doc(currentUser.email);
+  return FirebaseFirestore.instance.collection("users").doc(currentUser);
+}
+
+Future<QuerySnapshot<Map<String, dynamic>>> get chatCollection {
+  return FirebaseFirestore.instance
+    .collection('chatroom')
+    .doc('documentId') // ganti dengan id dokumen yang valid
+    .collection('chats')
+    .where("sendto", isEqualTo: currentUser).get();
 }

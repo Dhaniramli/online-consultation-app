@@ -2,8 +2,6 @@ import 'package:get/get.dart';
 
 import '../modules/costumer/cs_chat/bindings/cs_chat_binding.dart';
 import '../modules/costumer/cs_chat/views/cs_chat_view.dart';
-import '../modules/costumer/cs_edit_profile/bindings/cs_edit_profile_binding.dart';
-import '../modules/costumer/cs_edit_profile/views/cs_edit_profile_view.dart';
 import '../modules/costumer/cs_home/bindings/cs_home_binding.dart';
 import '../modules/costumer/cs_home/views/cs_home_view.dart';
 import '../modules/costumer/cs_main_navigation/bindings/cs_main_navigation_binding.dart';
@@ -20,8 +18,6 @@ import '../modules/login/bindings/login_binding.dart';
 import '../modules/login/views/login_view.dart';
 import '../modules/register/bindings/register_binding.dart';
 import '../modules/register/views/register_view.dart';
-import '../modules/select_doctor/bindings/select_doctor_binding.dart';
-import '../modules/select_doctor/views/select_doctor_view.dart';
 import '../modules/selectusers/bindings/selectusers_binding.dart';
 import '../modules/selectusers/views/selectusers_view.dart';
 
@@ -38,7 +34,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.LOGIN,
-      page: () => LoginView(type: ''),
+      page: () => const LoginView(type: ''),
       binding: LoginBinding(),
     ),
     GetPage(
@@ -75,11 +71,6 @@ class AppPages {
       name: _Paths.DOC_PROFILE,
       page: () => const DocProfileView(),
       binding: DocProfileBinding(),
-    ),
-    GetPage(
-      name: _Paths.SELECT_DOCTOR,
-      page: () => SelectDoctorView(doctorName: '', specialist: ''),
-      binding: SelectDoctorBinding(),
     ),
     GetPage(
       name: _Paths.CS_MY_PROFILE,
