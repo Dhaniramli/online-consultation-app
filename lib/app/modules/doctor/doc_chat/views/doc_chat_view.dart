@@ -37,12 +37,12 @@ class DocChatView extends GetView<DocChatController> {
                           width: double.infinity,
                           color: bgColor1,
                           child: SelectChatView(
-                            namaDokter: "${data?["fullName"]}",
-                            spesialis: "${data?["email"]}",
-                            chatId: "${listDocsChats[index].id}",
-                            friendEmail: listDocsChats[index]["connection"],
-                            totalUnread: listDocsChats[index]["total_unread"] as int
-                          ),
+                              namaDokter: "${data?["fullName"]}",
+                              spesialis: "${data?["email"]}",
+                              chatId: "${listDocsChats[index].id}",
+                              friendEmail: listDocsChats[index]["connection"],
+                              totalUnread:
+                                  listDocsChats[index]["total_unread"] as int),
                         );
                       }
                       return Container();
@@ -57,14 +57,31 @@ class DocChatView extends GetView<DocChatController> {
       );
     }
 
-    ;
+    Widget chatTitle() {
+      return Container(
+        margin: const EdgeInsets.only(top: 20),
+        child: Text(
+          'Chats',
+          style: textWhiteStyle.copyWith(fontSize: 30, fontWeight: semiBold),
+        ),
+      );
+    }
 
     return SafeArea(
-      child: Container(
-        margin: const EdgeInsets.symmetric(horizontal: 15),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [chatList()],
+      child: Scaffold(
+        appBar: PreferredSize(
+          preferredSize: const Size.fromHeight(80),
+          child: AppBar(
+            backgroundColor: primaryColor,
+            title: chatTitle(),
+          ),
+        ),
+        body: Container(
+          margin: const EdgeInsets.symmetric(horizontal: 15),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [chatList()],
+          ),
         ),
       ),
     );

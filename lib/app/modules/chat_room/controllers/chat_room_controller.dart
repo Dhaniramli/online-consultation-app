@@ -76,15 +76,15 @@ class ChatRoomController extends GetxController {
       }
     }
 
-    jam(String time) {
-      String timestamp = time;
+    // jam(String time) {
+    //   String timestamp = time;
 
-      // konversi string ke format DateTime
-      DateTime dateTime =
-          DateFormat("MMMM dd, yyyy 'at' h:mm:ss a 'UTC'Z").parse(timestamp);
+    //   // konversi string ke format DateTime
+    //   DateTime dateTime =
+    //       DateFormat("MMMM dd, yyyy 'at' h:mm:ss a 'UTC'Z").parse(timestamp);
 
-      // mengambil jam dari DateTime
-      return time = DateFormat("h").format(dateTime);
-    }
+    //   // mengambil jam dari DateTime
+    //   return time = DateFormat("h").format(dateTime);
+    // }
   }
 }

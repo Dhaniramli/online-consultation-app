@@ -77,14 +77,11 @@ class _CsSelectDoctorViewState extends State<CsSelectDoctorView> {
                 height: 80,
               ),
             ),
-            const SizedBox(width: 14),
+            const SizedBox(width: 20),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const SizedBox(
-                    height: 5,
-                  ),
                   Text(
                     widget.doctorName,
                     maxLines: 1,
@@ -98,6 +95,7 @@ class _CsSelectDoctorViewState extends State<CsSelectDoctorView> {
                     style: textStyleBlack.copyWith(
                         fontSize: 11, fontWeight: medium),
                   ),
+                  const SizedBox(height: 10),
                   Row(
                     mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -109,24 +107,24 @@ class _CsSelectDoctorViewState extends State<CsSelectDoctorView> {
                             fontSize: 13, fontWeight: medium),
                       ),
                       // const SizedBox(width: 20),
-                      const Spacer(),
-                      SizedBox(
-                        height: 37,
-                        child: TextButton(
-                          onPressed: () {},
-                          style: TextButton.styleFrom(
-                              padding: const EdgeInsets.symmetric(
-                                  vertical: 10, horizontal: 14),
-                              backgroundColor: primaryColor,
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(8))),
-                          child: Text(
-                            'Mulai Chat',
-                            style: textWhiteStyle.copyWith(
-                                fontSize: 15, fontWeight: medium),
-                          ),
-                        ),
-                      ),
+                      // const Spacer(),
+                      // SizedBox(
+                      //   height: 37,
+                      //   child: TextButton(
+                      //     onPressed: () {},
+                      //     style: TextButton.styleFrom(
+                      //         padding: const EdgeInsets.symmetric(
+                      //             vertical: 10, horizontal: 14),
+                      //         backgroundColor: primaryColor,
+                      //         shape: RoundedRectangleBorder(
+                      //             borderRadius: BorderRadius.circular(8))),
+                      //     child: Text(
+                      //       'Mulai Chat',
+                      //       style: textWhiteStyle.copyWith(
+                      //           fontSize: 15, fontWeight: medium),
+                      //     ),
+                      //   ),
+                      // ),
                     ],
                   ),
                 ],

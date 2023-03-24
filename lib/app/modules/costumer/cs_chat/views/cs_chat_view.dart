@@ -41,7 +41,8 @@ class CsChatView extends GetView<CsChatController> {
                             spesialis: "${data?["email"]}",
                             chatId: "${listDocsChats[index].id}",
                             friendEmail: listDocsChats[index]["connection"],
-                            totalUnread: listDocsChats[index]["total_unread"] as int,
+                            totalUnread:
+                                listDocsChats[index]["total_unread"] as int,
                           ),
                         );
                       }
@@ -57,14 +58,31 @@ class CsChatView extends GetView<CsChatController> {
       );
     }
 
-    ;
+    Widget chatTitle() {
+      return Container(
+        margin: const EdgeInsets.only(top: 20),
+        child: Text(
+          'Chats',
+          style: textWhiteStyle.copyWith(fontSize: 30, fontWeight: semiBold),
+        ),
+      );
+    }
 
     return SafeArea(
-      child: Container(
-        margin: const EdgeInsets.symmetric(horizontal: 15),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [chatList()],
+      child: Scaffold(
+        appBar: PreferredSize(
+          preferredSize: const Size.fromHeight(80),
+          child: AppBar(
+            backgroundColor: primaryColor,
+            title: chatTitle(),
+          ),
+        ),
+        body: Container(
+          margin: const EdgeInsets.symmetric(horizontal: 15),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [chatList()],
+          ),
         ),
       ),
     );

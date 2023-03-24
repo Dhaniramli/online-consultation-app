@@ -9,6 +9,8 @@ class CsHomeView extends GetView<CsHomeController> {
   const CsHomeView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(CsHomeController());
+
     Widget cariDokter() {
       return Container(
         height: 56,
@@ -20,7 +22,11 @@ class CsHomeView extends GetView<CsHomeController> {
           children: [
             Expanded(
               child: TextFormField(
-                onFieldSubmitted: (value) {},
+                controller: controller.searchC,
+                onChanged: (value) => controller.searchDoctor(value),
+                onFieldSubmitted: (value) {
+                  controller.searchDoctor(value);
+                },
                 style: textStyleBlack,
                 decoration: InputDecoration.collapsed(
                     hintText: 'Cari nama dokter atau spesialis',
@@ -54,7 +60,10 @@ class CsHomeView extends GetView<CsHomeController> {
     Widget recomendDokter() {
       return Expanded(
         child: StreamBuilder<QuerySnapshot>(
-          stream: FirebaseFirestore.instance.collection("users").where('type', isEqualTo: 'doctor').snapshots(),
+          stream: FirebaseFirestore.instance
+              .collection("users")
+              .where('type', isEqualTo: 'doctor')
+              .snapshots(),
           builder: (context, snapshot) {
             if (snapshot.hasError) return const Text("Error");
             if (snapshot.data == null) return Container();

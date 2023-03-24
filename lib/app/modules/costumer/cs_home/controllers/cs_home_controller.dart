@@ -1,23 +1,32 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class CsHomeController extends GetxController {
-  //TODO: Implement CsHomeController
+  late TextEditingController searchC;
 
-  final count = 0.obs;
+  var queryAwal = [].obs;
+  var tempSearch = [].obs;
+
+  void searchDoctor(String data) {
+    print("SEARCH: ${data}");
+
+    if (data.length == 0) {
+      queryAwal.value = [];
+      tempSearch.value = [];
+    } else {
+      
+    }
+  }
+
   @override
   void onInit() {
+    searchC = TextEditingController();
     super.onInit();
   }
 
   @override
-  void onReady() {
-    super.onReady();
-  }
-
-  @override
   void onClose() {
+    searchC.dispose();
     super.onClose();
   }
-
-  void increment() => count.value++;
 }

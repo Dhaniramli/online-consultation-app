@@ -134,8 +134,8 @@ class ChatRoomView extends GetView<ChatRoomController> {
         child: StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
           stream: controller.streamChat(chatRoomid),
           builder: (context, snapshot) {
-            print("1");
-            print(snapshot.data);
+            // print("1");
+            // print(snapshot.data);
             if (snapshot.connectionState == ConnectionState.active) {
               var allData = snapshot.data?.docs.length;
               Timer(
