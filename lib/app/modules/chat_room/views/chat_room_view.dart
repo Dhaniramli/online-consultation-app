@@ -1,11 +1,10 @@
+import 'package:get/get.dart';
 import 'dart:async';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:online_consultation_app/app/data/app_session.dart';
 import '../../../../theme.dart';
-import '../../costumer/cs_detail_doctor/controllers/cs_detail_doctor_controller.dart';
+import '../../../controllers/user_controller.dart';
 import '../controllers/chat_room_controller.dart';
 
 class ChatRoomView extends GetView<ChatRoomController> {
@@ -22,69 +21,123 @@ class ChatRoomView extends GetView<ChatRoomController> {
 
   @override
   Widget build(BuildContext context) {
-    // final authC = Get.find<CsDetailDoctorController>();
     final controller = Get.put(ChatRoomController());
-    // controller.chatRoomIdC = chatRoomid;
+    final UserController userController = Get.put(UserController());
     controller.userMapC = userMap;
 
     PreferredSize header() {
       return PreferredSize(
-          preferredSize: const Size.fromHeight(60),
-          child: AppBar(
-            backgroundColor: primaryColor,
-            leading: IconButton(
-                onPressed: () {
-                  // Navigator.pop(context);
-                  Get.back();
-                },
+        preferredSize: const Size.fromHeight(60),
+        child: AppBar(
+          backgroundColor: primaryColor,
+          leading: IconButton(
+              onPressed: () {
+                Get.back();
+              },
+              icon: Image.asset(
+                'assets/picture/panah_kiri.png',
+                width: 30,
+                height: 30,
+              )),
+          title: Row(
+            children: [
+              ClipOval(
+                child: Container(
+                  color: textGreyColor,
+                  child: StreamBuilder<DocumentSnapshot<Object?>>(
+                    stream: controller.streamFriendData("$friendEmail"),
+                    builder: ((context, snapFriend) {
+                      if (snapFriend.connectionState ==
+                          ConnectionState.active) {
+                        var dataFriend =
+                            snapFriend.data!.data() as Map<String, dynamic>;
+                        if (dataFriend["photo"] == "") {
+                          return Image.asset(
+                            'assets/picture/dokter.png',
+                            height: 50,
+                            width: 50,
+                            fit: BoxFit.cover,
+                          );
+                        } else {
+                          return Image.network(
+                            "${dataFriend["photo"]}",
+                            height: 50,
+                            width: 50,
+                            fit: BoxFit.cover,
+                          );
+                        }
+                      }
+                      return Image.asset(
+                        'assets/picture/dokter.png',
+                        height: 50,
+                        width: 50,
+                        fit: BoxFit.cover,
+                      );
+                    }),
+                  ),
+                ),
+              ),
+              const SizedBox(width: 15),
+              Expanded(
+                child: StreamBuilder<DocumentSnapshot<Object?>>(
+                  stream: controller.streamFriendData("$friendEmail"),
+                  builder: ((context, snapFriend) {
+                    if (snapFriend.connectionState == ConnectionState.active) {
+                      var dataFriend =
+                          snapFriend.data!.data() as Map<String, dynamic>;
+                      return Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "${dataFriend["fullName"]}",
+                            style: textWhiteStyle.copyWith(
+                                fontWeight: medium, fontSize: 14),
+                          ),
+                          dataFriend["status"] == true
+                              ? Text(
+                                  "Online",
+                                  style: textStyleOrange.copyWith(
+                                      fontWeight: light, fontSize: 14),
+                                )
+                              : Text(
+                                  "Offline",
+                                  style: textStyleOrange.copyWith(
+                                      fontWeight: light, fontSize: 14),
+                                )
+                        ],
+                      );
+                    }
+                    return Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Loading...",
+                          style: textWhiteStyle.copyWith(
+                              fontWeight: medium, fontSize: 14),
+                        ),
+                        Text(
+                          "Loading...",
+                          style: textStyleOrange.copyWith(
+                              fontWeight: light, fontSize: 14),
+                        )
+                      ],
+                    );
+                  }),
+                ),
+              ),
+              const Spacer(),
+              IconButton(
+                onPressed: () {},
                 icon: Image.asset(
-                  'assets/picture/panah_kiri.png',
-                  width: 30,
-                  height: 30,
-                )),
-            title: Row(
-              children: [
-                ClipOval(
-                  child: Container(
-                    color: textGreyColor,
-                    child: Image.asset(
-                      'assets/picture/dokter.png',
-                      height: 50,
-                      width: 50,
-                      fit: BoxFit.cover,
-                    ),
-                  ),
+                  'assets/picture/camera.png',
+                  width: 28.13,
+                  height: 18.75,
                 ),
-                const SizedBox(width: 15),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      // "noname",
-                      userMap?['fullName'],
-                      style: textWhiteStyle.copyWith(
-                          fontWeight: medium, fontSize: 14),
-                    ),
-                    Text(
-                      // 'Online',
-                      userMap?['status'],
-                      style: textStyleOrange.copyWith(
-                          fontWeight: light, fontSize: 14),
-                    ),
-                  ],
-                ),
-                const Spacer(),
-                IconButton(
-                  onPressed: () {},
-                  icon: Image.asset(
-                    'assets/picture/camera.png',
-                    width: 28.13,
-                    height: 18.75,
-                  ),
-                ),
-              ],
-            ),
-          ));
+              ),
+            ],
+          ),
+        ),
+      );
     }
 
     Widget chatInput() {
@@ -143,13 +196,41 @@ class ChatRoomView extends GetView<ChatRoomController> {
                   () => controller.scrollC
                       .jumpTo(controller.scrollC.position.maxScrollExtent));
               return ListView.builder(
-                  controller: controller.scrollC,
-                  itemCount: allData,
-                  itemBuilder: (context, index) {
-                    Map<String, dynamic> map = snapshot.data?.docs[index].data()
-                        as Map<String, dynamic>;
-                    return messages(context, map);
-                  });
+                controller: controller.scrollC,
+                itemCount: allData,
+                itemBuilder: (context, index) {
+                  Map<String, dynamic> map =
+                      snapshot.data?.docs[index].data() as Map<String, dynamic>;
+                  if (index == 0) {
+                    return Column(
+                      children: [
+                        Text(
+                          "${map["groupTime"]}",
+                          style: textStyleBlack.copyWith(
+                              fontSize: 13, fontWeight: medium),
+                        ),
+                        messages(context, map),
+                      ],
+                    );
+                  } else {
+                    if (snapshot.data?.docs[index]["groupTime"] ==
+                        snapshot.data?.docs[index - 1]["groupTime"]) {
+                      return messages(context, map);
+                    } else {
+                      return Column(
+                        children: [
+                          Text(
+                            "${map["groupTime"]}",
+                            style: textStyleBlack.copyWith(
+                                fontSize: 13, fontWeight: medium),
+                          ),
+                          messages(context, map),
+                        ],
+                      );
+                    }
+                  }
+                },
+              );
             }
             return Container();
           },
@@ -208,12 +289,11 @@ Widget messages(BuildContext context, Map<String, dynamic> map) {
             ),
           ],
         ),
-        // SizedBox(height: 2),
-        // Text(
-        //   // "10.00",
-        //   "${controller.jam("${map["time"]}")}",
-        //   style: textStyleBlack.copyWith(fontSize: 11),
-        // ),
+        const SizedBox(height: 2),
+        Text(
+          "${map['jm']}",
+          style: textStyleBlack.copyWith(fontSize: 11),
+        ),
       ],
     ),
   );

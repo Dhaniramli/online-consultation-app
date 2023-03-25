@@ -1,7 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'app/controllers/auth_controller.dart';
+import 'app/controllers/user_controller.dart';
 import 'app/modules/login/controllers/login_controller.dart';
 import 'app/routes/app_pages.dart';
 import 'utils/error_view.dart';

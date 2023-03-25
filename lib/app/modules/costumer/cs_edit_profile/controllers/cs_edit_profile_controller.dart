@@ -7,15 +7,14 @@ import '../../../../data/app_session.dart';
 
 class CsEditProfileController extends GetxController {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  late String emailC;
 
   TextEditingController photoC = TextEditingController();
   TextEditingController fullNameC = TextEditingController();
   TextEditingController dateC = TextEditingController();
-//  TextEditingController jenderC = TextEditingController();
   TextEditingController kotaC = TextEditingController();
   TextEditingController noTelponC = TextEditingController();
 
-  late String emailC;
   @override
   void onInit() {
     super.onInit();
@@ -34,7 +33,6 @@ class CsEditProfileController extends GetxController {
       jenderC = 'Laki - Laki';
     }
   }
-
 
   onUpdate() async {
     try {

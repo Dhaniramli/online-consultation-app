@@ -81,13 +81,13 @@ class _CsMainNavigationViewState extends State<CsMainNavigationView> {
     Widget body() {
       switch (controller.currentIndex) {
         case 0:
-          return const CsHomeView();
+          return CsHomeView();
         case 1:
           return const CsChatView();
         case 2:
           return const CsProfileView();
         default:
-          return const CsHomeView();
+          return CsHomeView();
       }
     }
 

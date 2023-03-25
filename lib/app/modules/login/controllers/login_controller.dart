@@ -50,7 +50,8 @@ class LoginController extends GetxController {
                 } else {
                   // Data tidak sesuai kriteria
                   print('Email belum terdaftar');
-                  Get.snackbar("Terjadi Kesalahan", "Anda Belum terdaftar sebagai ${typeC}");
+                  Get.snackbar("Terjadi Kesalahan",
+                      "Anda Belum terdaftar sebagai ${typeC}");
                 }
               } else {
                 // Dokumen tidak ditemukan
@@ -58,26 +59,6 @@ class LoginController extends GetxController {
                 Get.snackbar("Terjadi Kesalahan", "Email tidak terdaftar");
               }
             });
-
-            // DocumentSnapshot<Map<String, dynamic>> querySnapshot =
-            //     await _firestore.collection('users').doc(uid).get();
-
-            // if (querySnapshot.exists) {
-            //   // get the user document data
-            //   final userData = querySnapshot.data();
-
-            //   // check the user type
-            //   final String userType = userData!['type'];
-            //   if (userType == 'patient') {
-            //     Get.offAllNamed(Routes.CS_MAIN_NAVIGATION);
-            //   } else if (userType == 'doctor') {
-            //     Get.offAllNamed(Routes.DOC_MAIN_NAVIGATION);
-            //   } else {
-            //     // handle other user types or undefined types
-            //   }
-            // } else {
-            //   print('No user found with uid $uid');
-            // }
           } else {
             Get.defaultDialog(
                 title: "Belum Verifikasi",

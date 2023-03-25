@@ -45,7 +45,7 @@ class RegisterController extends GetxController {
             "uid": uid,
             "createAt": DateTime.now().toIso8601String(),
             "type": typeC,
-            "status": "Unavalible",
+            "status": false,
             "photo": "",
             "dateOfBirth": "",
             "kota": "",

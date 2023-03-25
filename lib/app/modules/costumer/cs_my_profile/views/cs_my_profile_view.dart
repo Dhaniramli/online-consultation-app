@@ -114,9 +114,7 @@ class CsMyProfileView extends GetView<CsMyProfileController> {
                       ),
                       const SizedBox(height: 5),
                       Text(
-                        item["jender"] != null
-                            ? "${item["jender"]}"
-                            : "",
+                        item["jender"] != null ? "${item["jender"]}" : "",
                         style: textStyleBlack.copyWith(fontSize: 13),
                       ),
                       const SizedBox(height: 15),
@@ -128,9 +126,7 @@ class CsMyProfileView extends GetView<CsMyProfileController> {
                       ),
                       const SizedBox(height: 5),
                       Text(
-                        item["kota"] != null
-                            ? "${item["kota"]}"
-                            : "",
+                        item["kota"] != null ? "${item["kota"]}" : "",
                         style: textStyleBlack.copyWith(fontSize: 13),
                       ),
                     ],
@@ -145,6 +141,7 @@ class CsMyProfileView extends GetView<CsMyProfileController> {
                       onPressed: () {
                         Get.to(() => CsEditProfileView(
                               emailV: item["email"],
+                              item: item,
                             ));
                       },
                       style: TextButton.styleFrom(

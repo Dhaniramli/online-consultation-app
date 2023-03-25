@@ -8,8 +8,9 @@ import '../controllers/cs_edit_profile_controller.dart';
 
 class CsEditProfileView extends StatefulWidget {
   String emailV;
+  Map<String, dynamic> item;
 
-  CsEditProfileView({super.key, required this.emailV});
+  CsEditProfileView({super.key, required this.emailV, required this.item});
 
   @override
   State<CsEditProfileView> createState() => _CsEditProfileView();
@@ -22,6 +23,7 @@ class _CsEditProfileView extends State<CsEditProfileView> {
   @override
   Widget build(BuildContext context) {
     controller.emailC = widget.emailV;
+    // controller.itemC = widget.item["fullName"];
 
     PreferredSize header() {
       return PreferredSize(

@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../../../theme.dart';
+import '../../../../controllers/user_controller.dart';
 import '../../cs_select_doctor/views/cs_select_doctor_view.dart';
 import '../controllers/cs_home_controller.dart';
 
@@ -10,6 +11,7 @@ class CsHomeView extends GetView<CsHomeController> {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(CsHomeController());
+    // final UserController userController = Get.put(UserController());
 
     Widget cariDokter() {
       return Container(
@@ -29,7 +31,7 @@ class CsHomeView extends GetView<CsHomeController> {
                 },
                 style: textStyleBlack,
                 decoration: InputDecoration.collapsed(
-                    hintText: 'Cari nama dokter atau spesialis',
+                    hintText: 'Cari spesialis',
                     hintStyle: textInputColorStyle.copyWith(
                         fontSize: 15, fontWeight: medium)),
               ),
@@ -94,12 +96,36 @@ class CsHomeView extends GetView<CsHomeController> {
       );
     }
 
+    Widget hasilCari() {
+      return Expanded(
+        child: ListView.builder(
+          itemCount: controller.tempSearch.length,
+          itemBuilder: (BuildContext context, int index) {
+            return Container(
+              width: double.infinity,
+              color: bgColor1,
+              child: CsSelectDoctorView(
+                doctorName: "${controller.tempSearch[index]["fullName"]}",
+                specialist: "${controller.tempSearch[index]["fullName"]}",
+                email: "${controller.tempSearch[index]["email"]}",
+              ),
+            );
+          },
+        ),
+      );
+    }
+
     return SafeArea(
       child: Container(
         margin: const EdgeInsets.symmetric(horizontal: 15),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: [cariDokter(), recomedTitle(), recomendDokter()],
+          children: [
+            cariDokter(),
+            recomedTitle(),
+            Obx(() =>
+                controller.tempSearch.isEmpty ? recomendDokter() : hasilCari()),
+          ],
         ),
       ),
     );

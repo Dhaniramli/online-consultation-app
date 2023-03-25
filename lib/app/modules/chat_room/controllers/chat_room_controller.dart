@@ -15,10 +15,20 @@ class ChatRoomController extends GetxController {
   String? chatRoomIdC;
   int totalUnread = 0;
 
+  String formattedTimestamp = DateTime.fromMillisecondsSinceEpoch(
+          Timestamp.now().millisecondsSinceEpoch)
+      .toString();
+
   Stream<QuerySnapshot<Map<String, dynamic>>> streamChat(String chatId) {
     CollectionReference chats = firestore.collection("chats");
 
     return chats.doc(chatId).collection("chats").orderBy("time").snapshots();
+  }
+
+  Stream<DocumentSnapshot<Object?>> streamFriendData(String friendEmail) {
+    CollectionReference users = firestore.collection("users");
+
+    return users.doc(friendEmail).snapshots();
   }
 
   Future<void> newChat(
@@ -35,6 +45,8 @@ class ChatRoomController extends GetxController {
         "msg": chat,
         "time": Timestamp.now(),
         "isRead": false,
+        "jm": DateFormat.jm().format(DateTime.parse(date)),
+        "groupTime": DateFormat.yMMMMd('en_US').format(DateTime.parse(date)),
       });
 
       Timer(Duration.zero,

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../../../theme.dart';
+import '../../../../controllers/user_controller.dart';
 import '../../../../data/app_session.dart';
 import '../../cs_my_profile/views/cs_my_profile_view.dart';
 import '../controllers/cs_profile_controller.dart';
@@ -41,9 +42,9 @@ class CsProfileView extends GetView<CsProfileController> {
                   ClipRRect(
                     borderRadius: BorderRadius.circular(40),
                     child: Image.asset(
-                        'assets/picture/dokter.png',
-                        width: 80,
-                      ),
+                      'assets/picture/dokter.png',
+                      width: 80,
+                    ),
                     // Image.network(
                     //   item["photo"] != null
                     //       ? "${item["photo"]}"
@@ -81,7 +82,6 @@ class CsProfileView extends GetView<CsProfileController> {
     Widget profileSaya() {
       return GestureDetector(
         onTap: () {
-          // Navigator.pushNamed(context, 'profileSaya');
           Get.to(CsMyProfileView());
         },
         child: Container(
