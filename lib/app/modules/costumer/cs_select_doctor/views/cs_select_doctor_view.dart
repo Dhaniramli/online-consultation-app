@@ -9,6 +9,7 @@ class CsSelectDoctorView extends StatefulWidget {
   final String doctorName;
   final String specialist;
   final String email;
+  final String photo;
   // final double? harga;
 
   const CsSelectDoctorView({
@@ -16,6 +17,7 @@ class CsSelectDoctorView extends StatefulWidget {
     required this.doctorName,
     required this.specialist,
     required this.email,
+    required this.photo,
     // this.harga,
   });
 
@@ -71,11 +73,18 @@ class _CsSelectDoctorViewState extends State<CsSelectDoctorView> {
           children: [
             ClipRRect(
               borderRadius: BorderRadius.circular(8),
-              child: Image.asset(
-                'assets/picture/dokter.png',
-                width: 81,
-                height: 80,
-              ),
+              child: widget.photo != ""
+                  ? Image.network(
+                      widget.photo,
+                      width: 81.0,
+                      height: 80.0,
+                      fit: BoxFit.cover,
+                    )
+                  : Image.asset(
+                      'assets/picture/dokter.png',
+                      width: 81,
+                      height: 80,
+                    ),
             ),
             const SizedBox(width: 20),
             Expanded(
@@ -90,42 +99,22 @@ class _CsSelectDoctorViewState extends State<CsSelectDoctorView> {
                         fontSize: 16, fontWeight: semiBold),
                   ),
                   const SizedBox(height: 10),
-                  Text(
-                    'Spesialis Kulit',
-                    style: textStyleBlack.copyWith(
-                        fontSize: 11, fontWeight: medium),
-                  ),
+                  widget.specialist != ""
+                      ? Text(
+                          "Spesialis ${widget.specialist}",
+                          style: textStyleBlack.copyWith(
+                              fontSize: 11, fontWeight: medium),
+                        )
+                      : Text(
+                          "Spesialis...",
+                          style: textStyleBlack.copyWith(
+                              fontSize: 11, fontWeight: medium),
+                        ),
                   const SizedBox(height: 10),
-                  Row(
-                    mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        'Rp 45.000',
-                        style: textStyleOrange.copyWith(
-                            fontSize: 13, fontWeight: medium),
-                      ),
-                      // const SizedBox(width: 20),
-                      // const Spacer(),
-                      // SizedBox(
-                      //   height: 37,
-                      //   child: TextButton(
-                      //     onPressed: () {},
-                      //     style: TextButton.styleFrom(
-                      //         padding: const EdgeInsets.symmetric(
-                      //             vertical: 10, horizontal: 14),
-                      //         backgroundColor: primaryColor,
-                      //         shape: RoundedRectangleBorder(
-                      //             borderRadius: BorderRadius.circular(8))),
-                      //     child: Text(
-                      //       'Mulai Chat',
-                      //       style: textWhiteStyle.copyWith(
-                      //           fontSize: 15, fontWeight: medium),
-                      //     ),
-                      //   ),
-                      // ),
-                    ],
+                  Text(
+                    'Rp 45.000',
+                    style: textStyleOrange.copyWith(
+                        fontSize: 13, fontWeight: medium),
                   ),
                 ],
               ),

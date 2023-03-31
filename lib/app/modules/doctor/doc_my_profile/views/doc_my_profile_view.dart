@@ -2,12 +2,13 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../../../theme.dart';
+import '../../../../../utils/loading_view.dart';
 import '../../../../data/app_session.dart';
-import '../../cs_edit_profile/views/cs_edit_profile_view.dart';
-import '../controllers/cs_my_profile_controller.dart';
+import '../../doc_edit_profile/views/doc_edit_profile_view.dart';
+import '../controllers/doc_my_profile_controller.dart';
 
-class CsMyProfileView extends GetView<CsMyProfileController> {
-  const CsMyProfileView({Key? key}) : super(key: key);
+class DocMyProfileView extends GetView<DocMyProfileController> {
+  const DocMyProfileView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     PreferredSize header() {
@@ -27,8 +28,8 @@ class CsMyProfileView extends GetView<CsMyProfileController> {
       return StreamBuilder<DocumentSnapshot<Object?>>(
         stream: userCollection.snapshots(),
         builder: (context, snapshot) {
-          if (snapshot.hasError) return const Text("Error");
-          if (!snapshot.hasData) return const Text("No Data");
+          if (snapshot.hasError) return const Center(child: Text("Error"));
+          if (!snapshot.hasData) return LoadingView();
           if (snapshot.data!.data != null) {
             Map<String, dynamic> item =
                 (snapshot.data!.data() as Map<String, dynamic>);
@@ -147,7 +148,7 @@ class CsMyProfileView extends GetView<CsMyProfileController> {
                   margin: const EdgeInsets.only(right: 15, left: 15),
                   child: TextButton(
                       onPressed: () {
-                        Get.to(() => CsEditProfileView(
+                        Get.to(() => DocEditProfileView(
                               emailV: item["email"],
                               item: item,
                             ));

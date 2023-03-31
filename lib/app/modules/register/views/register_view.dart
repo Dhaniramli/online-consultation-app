@@ -21,7 +21,6 @@ class RegisterView extends GetView<RegisterController> {
       return Container(
         height: 56,
         width: double.infinity,
-        margin: const EdgeInsets.only(top: 159),
         padding: const EdgeInsets.symmetric(horizontal: 20),
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(8), color: containerInputColor),
@@ -171,17 +170,44 @@ class RegisterView extends GetView<RegisterController> {
       );
     }
 
+    Widget titlePasien() {
+      return Padding(
+        padding: const EdgeInsets.only(bottom: 50),
+        child: Text(
+          "Sebagai Pasien",
+          style: textStylePrimaryColor.copyWith(
+            fontSize: 21.0,
+            fontWeight: FontWeight.w800,
+          ),
+        ),
+      );
+    }
+
+    Widget titleDokter() {
+      return Padding(
+        padding: const EdgeInsets.only(bottom: 50),
+        child: Text(
+          "Sebagai Apoteker",
+          style: textStylePrimaryColor.copyWith(
+            fontSize: 21.0,
+            fontWeight: FontWeight.w800,
+          ),
+        ),
+      );
+    }
+
     return Scaffold(
       backgroundColor: bgColor1,
       resizeToAvoidBottomInset: false,
-      body: controller.isLoadingC
+      body: controller.isLoadingC == true
           ? LoadingView()
           : SafeArea(
               child: Container(
                 margin: const EdgeInsets.symmetric(horizontal: 15),
                 child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text("${type}"),
+                    type == "patient" ? titlePasien() : titleDokter(),
                     fullNameInput(),
                     usernameInput(),
                     noTelpInput(),

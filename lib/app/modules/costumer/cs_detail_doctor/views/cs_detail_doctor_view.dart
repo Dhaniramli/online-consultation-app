@@ -40,24 +40,29 @@ class CsDetailDoctorView extends GetView<CsDetailDoctorController> {
           children: [
             const SizedBox(height: 13),
             ClipRRect(
-              borderRadius: BorderRadius.circular(10),
-              child: Image.asset(
-                'assets/picture/dokter.png',
-                width: 225,
-                height: 225,
-              ),
+              borderRadius: BorderRadius.circular(8),
+              child: userMap?['photo'] != ""
+                  ? Image.network(
+                      "${userMap?['photo']}",
+                      width: 225.0,
+                      height: 225.0,
+                      fit: BoxFit.cover,
+                    )
+                  : Image.asset(
+                      'assets/picture/dokter.png',
+                      width: 225.0,
+                      height: 225.0,
+                    ),
             ),
             const SizedBox(height: 19),
             Text(
-              // 'Dr. Ronald Richard',
               userMap?['fullName'],
               style:
                   textStyleBlack.copyWith(fontSize: 19, fontWeight: semiBold),
             ),
             const SizedBox(height: 5),
             Text(
-              // 'Dokter Spesialis Kulit',
-              userMap?['email'],
+              userMap?['spesialis'] != ""? "Spesialis ${userMap?['spesialis']}" : "Spesialis...",
               style: textStyleGrey.copyWith(fontSize: 16, fontWeight: semiBold),
             )
           ],
@@ -96,8 +101,7 @@ class CsDetailDoctorView extends GetView<CsDetailDoctorController> {
                     ),
                     const SizedBox(height: 10),
                     Text(
-                      'Universitas Hasanuddin',
-                      // widget.userMap?['full_name'],
+                      "${userMap?['pendidikanTerakhir']}",
                       style: textStyleBlack.copyWith(fontSize: 15),
                     ),
                     const SizedBox(height: 5),

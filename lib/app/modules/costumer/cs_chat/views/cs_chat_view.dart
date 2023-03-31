@@ -37,8 +37,11 @@ class CsChatView extends GetView<CsChatController> {
                           width: double.infinity,
                           color: bgColor1,
                           child: SelectChatView(
+                            photo: "${data?["photo"]}",
+                            type: "${data?["type"]}",
+                            status: data?["status"],
                             namaDokter: "${data?["fullName"]}",
-                            spesialis: "${data?["email"]}",
+                            spesialis: "${data?["spesialis"]}",
                             chatId: "${listDocsChats[index].id}",
                             friendEmail: listDocsChats[index]["connection"],
                             totalUnread:

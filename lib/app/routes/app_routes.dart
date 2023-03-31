@@ -24,6 +24,8 @@ abstract class Routes {
   static const CHAT_ROOM = _Paths.CHAT_ROOM;
   static const SELECT_CHAT = _Paths.SELECT_CHAT;
   static const CS_DETAIL_DOCTOR = _Paths.CS_DETAIL_DOCTOR;
+  static const DOC_MY_PROFILE = _Paths.DOC_MY_PROFILE;
+  static const DOC_EDIT_PROFILE = _Paths.DOC_EDIT_PROFILE;
 }
 
 abstract class _Paths {
@@ -49,4 +51,6 @@ abstract class _Paths {
   static const CHAT_ROOM = '/chat-room';
   static const SELECT_CHAT = '/select-chat';
   static const CS_DETAIL_DOCTOR = '/cs-detail-doctor';
+  static const DOC_MY_PROFILE = '/doc-my-profile';
+  static const DOC_EDIT_PROFILE = '/doc-edit-profile';
 }

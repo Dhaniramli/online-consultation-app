@@ -8,12 +8,16 @@ import '../modules/costumer/cs_main_navigation/bindings/cs_main_navigation_bindi
 import '../modules/costumer/cs_main_navigation/views/cs_main_navigation_view.dart';
 import '../modules/costumer/cs_my_profile/bindings/cs_my_profile_binding.dart';
 import '../modules/costumer/cs_my_profile/views/cs_my_profile_view.dart';
+import '../modules/doctor/doc_my_profile/bindings/doc_my_profile_binding.dart';
+import '../modules/doctor/doc_my_profile/views/doc_my_profile_view.dart';
 import '../modules/doctor/doc_chat/bindings/doc_chat_binding.dart';
 import '../modules/doctor/doc_chat/views/doc_chat_view.dart';
 import '../modules/doctor/doc_main_navigation/bindings/doc_main_navigation_binding.dart';
 import '../modules/doctor/doc_main_navigation/views/doc_main_navigation_view.dart';
 import '../modules/doctor/doc_profile/bindings/doc_profile_binding.dart';
 import '../modules/doctor/doc_profile/views/doc_profile_view.dart';
+import '../modules/home/bindings/home_binding.dart';
+import '../modules/home/views/home_view.dart';
 import '../modules/login/bindings/login_binding.dart';
 import '../modules/login/views/login_view.dart';
 import '../modules/register/bindings/register_binding.dart';
@@ -76,6 +80,16 @@ class AppPages {
       name: _Paths.CS_MY_PROFILE,
       page: () => const CsMyProfileView(),
       binding: CsMyProfileBinding(),
+    ),
+    GetPage(
+      name: _Paths.HOME,
+      page: () => const HomeView(),
+      binding: HomeBinding(),
+    ),
+    GetPage(
+      name: _Paths.DOC_MY_PROFILE,
+      page: () => const DocMyProfileView(),
+      binding: DocMyProfileBinding(),
     ),
   ];
 }

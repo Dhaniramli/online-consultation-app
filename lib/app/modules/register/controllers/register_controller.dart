@@ -37,19 +37,40 @@ class RegisterController extends GetxController {
         if (userCredential.user != null && typeC != null) {
           String uid = userCredential.user!.uid;
 
-          await _firestore.collection("users").doc(emailC.text).set({
-            "fullName": fullNameC.text,
-            "username": usernameC.text,
-            "noTelpon": noTelponC.text,
-            "email": emailC.text,
-            "uid": uid,
-            "createAt": DateTime.now().toIso8601String(),
-            "type": typeC,
-            "status": false,
-            "photo": "",
-            "dateOfBirth": "",
-            "kota": "",
-          });
+          if (typeC == "patient") {
+            await _firestore.collection("users").doc(emailC.text).set({
+              "fullName": fullNameC.text,
+              "username": usernameC.text,
+              "noTelpon": noTelponC.text,
+              "email": emailC.text,
+              "uid": uid,
+              "createAt": DateTime.now().toIso8601String(),
+              "type": typeC,
+              "status": false,
+              "photo": "",
+              "dateOfBirth": "",
+              "kota": "",
+              "pendidikanTerakhir": "",
+              "pekerjaan": "",
+            });
+          } else {
+            await _firestore.collection("users").doc(emailC.text).set({
+              "fullName": fullNameC.text,
+              "username": usernameC.text,
+              "noTelpon": noTelponC.text,
+              "email": emailC.text,
+              "uid": uid,
+              "createAt": DateTime.now().toIso8601String(),
+              "type": typeC,
+              "status": false,
+              "photo": "",
+              "dateOfBirth": "",
+              "kota": "",
+              "pendidikanTerakhir": "",
+              "tahunLulus": "",
+              "spesialis": "",
+            });
+          }
 
           await _firestore
               .collection("users")

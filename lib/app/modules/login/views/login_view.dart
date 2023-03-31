@@ -66,7 +66,6 @@ class LoginView extends GetView<LoginController> {
         margin: const EdgeInsets.only(top: 55),
         child: TextButton(
           onPressed: () {
-            controller.isLoadingC = true;
             controller.logIn();
           },
           style: TextButton.styleFrom(
@@ -95,8 +94,6 @@ class LoginView extends GetView<LoginController> {
             GestureDetector(
               onTap: () {
                 Get.to(RegisterView(type: type));
-                // Get.to(() => SelectusersView());
-                // Get.lazyPut(()=>RegisterController());
               },
               child: Text(
                 'Daftar',
@@ -109,17 +106,44 @@ class LoginView extends GetView<LoginController> {
       );
     }
 
+    Widget titlePasien() {
+      return Padding(
+        padding: const EdgeInsets.only(bottom: 50),
+        child: Text(
+          "Masuk Sebagai Pasien",
+          style: textStylePrimaryColor.copyWith(
+            fontSize: 21.0,
+            fontWeight: FontWeight.w800,
+          ),
+        ),
+      );
+    }
+
+    Widget titleDokter() {
+      return Padding(
+        padding: const EdgeInsets.only(bottom: 50),
+        child: Text(
+          "Masuk Sebagai Apoteker",
+          style: textStylePrimaryColor.copyWith(
+            fontSize: 21.0,
+            fontWeight: FontWeight.w800,
+          ),
+        ),
+      );
+    }
+
     return Scaffold(
       backgroundColor: bgColor1,
       resizeToAvoidBottomInset: false,
-      body: controller.isLoadingC
+      body: controller.isLoadingC == true
           ? LoadingView()
           : SafeArea(
               child: Container(
-              margin: const EdgeInsets.only(top: 235, left: 15, right: 15),
+              margin: const EdgeInsets.only(left: 15, right: 15),
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text("${type}"),
+                  type == "patient" ? titlePasien() : titleDokter(),
                   emailInput(),
                   passwordInput(),
                   buttonMasuk(),

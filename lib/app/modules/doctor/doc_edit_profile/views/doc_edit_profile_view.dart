@@ -4,25 +4,25 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
-import 'package:online_consultation_app/app/data/app_session.dart';
 import '../../../../../theme.dart';
-import 'widgets/cs_button_row.dart';
-import '../controllers/cs_edit_profile_controller.dart';
-import 'widgets/cs_widget_input.dart';
+import '../../../../data/app_session.dart';
+import '../controllers/doc_edit_profile_controller.dart';
+import 'widgets/doc_button_row.dart';
+import 'widgets/doc_widget_input.dart';
 
-class CsEditProfileView extends StatefulWidget {
+class DocEditProfileView extends StatefulWidget {
   String emailV;
   Map<String, dynamic> item;
 
-  CsEditProfileView({super.key, required this.emailV, required this.item});
+  DocEditProfileView({super.key, required this.emailV, required this.item});
 
   @override
-  State<CsEditProfileView> createState() => _CsEditProfileView();
+  State<DocEditProfileView> createState() => _DocEditProfileView();
 }
 
-class _CsEditProfileView extends State<CsEditProfileView> {
+class _DocEditProfileView extends State<DocEditProfileView> {
   // final controller = Get.find<CsEditProfileController>();
-  final controller = Get.put(CsEditProfileController());
+  final controller = Get.put(DocEditProfileController());
 
   @override
   Widget build(BuildContext context) {
@@ -60,7 +60,7 @@ class _CsEditProfileView extends State<CsEditProfileView> {
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(8),
                         color: containerInputColor),
-                    child: GetBuilder<CsEditProfileController>(
+                    child: GetBuilder<DocEditProfileController>(
                       builder: (c) => c.pickedImage != null
                           ? Row(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -142,7 +142,7 @@ class _CsEditProfileView extends State<CsEditProfileView> {
                   ),
                 ),
                 const SizedBox(height: 15.0),
-                CsWidgetInput(
+                DocWidgetInput(
                   label: 'Nama Lengkap',
                   typeInputan: TextInputType.multiline,
                   controlC: controller.fullNameC,
@@ -196,7 +196,7 @@ class _CsEditProfileView extends State<CsEditProfileView> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    CsButtonRow(
+                    DocButtonRow(
                       text: 'Laki - Laki',
                       value: 1,
                       groupValue: controller.valueC,
@@ -207,7 +207,7 @@ class _CsEditProfileView extends State<CsEditProfileView> {
                       },
                     ),
                     const SizedBox(width: 10),
-                    CsButtonRow(
+                    DocButtonRow(
                       text: 'Perempuan',
                       value: 2,
                       groupValue: controller.valueC,
@@ -220,13 +220,13 @@ class _CsEditProfileView extends State<CsEditProfileView> {
                   ],
                 ),
                 const SizedBox(height: 15),
-                CsWidgetInput(
+                DocWidgetInput(
                   label: 'Kota/Kabupaten',
                   typeInputan: TextInputType.multiline,
                   controlC: controller.kotaC,
                 ),
                 const SizedBox(height: 15),
-                CsWidgetInput(
+                DocWidgetInput(
                   label: "Nomor Telepon",
                   typeInputan: TextInputType.number,
                   controlC: controller.noTelponC,
@@ -235,16 +235,16 @@ class _CsEditProfileView extends State<CsEditProfileView> {
                   ],
                 ),
                 const SizedBox(height: 15),
-                CsWidgetInput(
+                DocWidgetInput(
                   label: "Pendidikan Terakhir",
                   typeInputan: TextInputType.multiline,
                   controlC: controller.pendidikanC,
                 ),
                 const SizedBox(height: 15),
-                CsWidgetInput(
-                  label: "Pekerjaan",
+                DocWidgetInput(
+                  label: "Spesialis",
                   typeInputan: TextInputType.multiline,
-                  controlC: controller.pekerjaanC,
+                  controlC: controller.spesialisC,
                 ),
                 const SizedBox(height: 20),
                 SizedBox(

@@ -142,7 +142,7 @@ class ChatRoomView extends GetView<ChatRoomController> {
 
     Widget chatInput() {
       return Container(
-        margin: const EdgeInsets.all(20),
+        margin: const EdgeInsets.only(right: 15.0, left: 15.0, bottom: 15.0),
         child: Row(
           children: [
             Expanded(
@@ -240,8 +240,12 @@ class ChatRoomView extends GetView<ChatRoomController> {
 
     return Scaffold(
       appBar: header(),
-      body: content(),
-      bottomNavigationBar: chatInput(),
+      body: Column(
+        children: [
+          Expanded(child: content()),
+          chatInput(),
+        ],
+      ),
     );
   }
 }

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../../../theme.dart';
-import '../controllers/cs_edit_profile_controller.dart';
+import '../../../../../../theme.dart';
+import '../../controllers/cs_edit_profile_controller.dart';
 
 const Color containers = Color(0xffECF2FF);
 const Color containerP = Color(0xff585CE5);

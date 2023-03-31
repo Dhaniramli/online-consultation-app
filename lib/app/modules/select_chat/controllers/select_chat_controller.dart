@@ -13,11 +13,11 @@ class SelectChatController extends GetxController {
     CollectionReference chats = firestore.collection("chats");
     CollectionReference users = firestore.collection("users");
 
-    Get.to(ChatRoomView(
-      userMap: userMap,
-      chatRoomid: chatId,
-      friendEmail: friendEmail,
-    ));
+    Get.to(() => ChatRoomView(
+          userMap: userMap,
+          chatRoomid: chatId,
+          friendEmail: friendEmail,
+        ));
 
     final updateStatusChat = await chats
         .doc(chatId)

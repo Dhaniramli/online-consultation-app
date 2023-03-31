@@ -10,10 +10,12 @@ dependencies:
   cupertino_icons: ^1.0.2
   firebase_auth: ^4.2.9
   firebase_core: ^2.6.1
+  firebase_storage: ^11.0.16
   flutter:
     sdk: flutter
   get: 4.6.5
   google_fonts: ^4.0.3
+  image_picker: ^0.8.7
   intl: ^0.17.0
   lottie: ^2.2.0
 

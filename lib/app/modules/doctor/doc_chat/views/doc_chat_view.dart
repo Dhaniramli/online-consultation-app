@@ -37,12 +37,16 @@ class DocChatView extends GetView<DocChatController> {
                           width: double.infinity,
                           color: bgColor1,
                           child: SelectChatView(
-                              namaDokter: "${data?["fullName"]}",
-                              spesialis: "${data?["email"]}",
-                              chatId: "${listDocsChats[index].id}",
-                              friendEmail: listDocsChats[index]["connection"],
-                              totalUnread:
-                                  listDocsChats[index]["total_unread"] as int),
+                            photo: "${data?["photo"]}",
+                            type: "${data?["type"]}",
+                            status: data?["status"],
+                            namaDokter: "${data?["fullName"]}",
+                            spesialis: "${data?["spesialis"]}",
+                            chatId: "${listDocsChats[index].id}",
+                            friendEmail: listDocsChats[index]["connection"],
+                            totalUnread:
+                                listDocsChats[index]["total_unread"] as int,
+                          ),
                         );
                       }
                       return Container();

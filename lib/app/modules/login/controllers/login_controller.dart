@@ -18,6 +18,7 @@ class LoginController extends GetxController {
   // var patient = await _firestore.collection('users').doc('patient');
 
   Future<void> logIn() async {
+    isLoadingC == true;
     if (emailC.text.isNotEmpty && passwordC.text.isNotEmpty) {
       try {
         UserCredential userCredential = await _auth.signInWithEmailAndPassword(
@@ -27,7 +28,6 @@ class LoginController extends GetxController {
 
         if (userCredential.user != null) {
           if (userCredential.user!.emailVerified == true) {
-            isLoadingC = false;
             String uid = _auth.currentUser!.uid;
 
             var docRef =
@@ -42,6 +42,8 @@ class LoginController extends GetxController {
                   print('Data dari dokumen ${emailC.text}');
                   print('Nama: ${data['type']}');
                   Get.offAllNamed(Routes.CS_MAIN_NAVIGATION);
+                  emailC.clear();
+                  passwordC.clear();
                   if (data['type'] == 'patient') {
                     Get.offAllNamed(Routes.CS_MAIN_NAVIGATION);
                   } else if (data['type'] == 'doctor') {

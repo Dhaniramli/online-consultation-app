@@ -41,16 +41,16 @@ class CsProfileView extends GetView<CsProfileController> {
                 children: [
                   ClipRRect(
                     borderRadius: BorderRadius.circular(40),
-                    child: Image.asset(
-                      'assets/picture/dokter.png',
-                      width: 80,
-                    ),
-                    // Image.network(
-                    //   item["photo"] != null
-                    //       ? "${item["photo"]}"
-                    //       : "https://www.istockphoto.com/id/foto/percaya-diri-bahagia-gadis-siswa-hispanik-cantik-potret-kepala-dalam-ruangan-menembak-gm1407759041-458852649",
-                    //   width: 80.0,
-                    // ),
+                    child: item["photo"] != ""
+                        ? Image.network(
+                            "${item["photo"]}",
+                            width: 80.0,
+                            fit: BoxFit.cover,
+                          )
+                        : Image.asset(
+                            'assets/picture/dokter.png',
+                            width: 80,
+                          ),
                   ),
                   const SizedBox(width: 15),
                   Column(
@@ -82,7 +82,7 @@ class CsProfileView extends GetView<CsProfileController> {
     Widget profileSaya() {
       return GestureDetector(
         onTap: () {
-          Get.to(CsMyProfileView());
+          Get.to(() => const CsMyProfileView());
         },
         child: Container(
           height: 60,

@@ -1,7 +1,6 @@
 import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -9,7 +8,7 @@ import 'package:image_picker/image_picker.dart';
 
 import '../../../../data/app_session.dart';
 
-class CsEditProfileController extends GetxController {
+class DocEditProfileController extends GetxController {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   late String emailC;
 
@@ -18,7 +17,7 @@ class CsEditProfileController extends GetxController {
   late TextEditingController kotaC;
   late TextEditingController noTelponC;
   late TextEditingController pendidikanC;
-  late TextEditingController pekerjaanC;
+  late TextEditingController spesialisC;
   late ImagePicker pickerC;
 
   XFile? pickedImage = null;
@@ -79,9 +78,9 @@ class CsEditProfileController extends GetxController {
     dateC = TextEditingController();
     kotaC = TextEditingController();
     noTelponC = TextEditingController();
-    pendidikanC = TextEditingController();
-    pekerjaanC = TextEditingController();
     pickerC = ImagePicker();
+    pendidikanC = TextEditingController();
+    spesialisC = TextEditingController();
   }
 
   @override
@@ -91,13 +90,13 @@ class CsEditProfileController extends GetxController {
     kotaC.dispose();
     noTelponC.dispose();
     pendidikanC.dispose();
-    pekerjaanC.dispose();
+    spesialisC.dispose();
     super.onClose();
   }
 
   int valueC = 0;
   late String jenderC;
-  void setGender(int? value) {
+  void setGender(int value) {
     print("Jender ${value}");
     if (value == 1) {
       jenderC = 'Laki - Laki';
@@ -114,17 +113,18 @@ class CsEditProfileController extends GetxController {
         kotaC.text.isNotEmpty &&
         jenderC.isNotEmpty &&
         noTelponC.text.isNotEmpty &&
-        pendidikanC.text.isNotEmpty &&
-        pekerjaanC.text.isNotEmpty) {
+        spesialisC.text.isNotEmpty &&
+        pendidikanC.text.isNotEmpty) {
       try {
         await _firestore.collection("users").doc(emailC).update({
+          // "photo": pickerC,
           "fullName": fullNameC.text,
           "dateOfBirth": dateC.text,
           "kota": kotaC.text,
           "jender": jenderC,
           "noTelpon": noTelponC.text,
+          "spesialis": spesialisC.text,
           "pendidikanTerakhir": pendidikanC.text,
-          "pekerjaan": pekerjaanC.text,
         });
         Get.back();
       } catch (err) {

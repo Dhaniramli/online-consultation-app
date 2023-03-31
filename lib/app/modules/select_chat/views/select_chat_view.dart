@@ -12,18 +12,24 @@ class SelectChatView extends StatefulWidget {
   final String? spesialis;
   final String? chatId;
   final String? friendEmail;
+  final String? photo;
   final int? totalUnread;
+  final String? type;
+  final bool? status;
   // final double? harga;
 
-  const SelectChatView({
-    super.key,
-    this.namaDokter,
-    this.spesialis,
-    this.chatId,
-    this.friendEmail,
-    this.totalUnread,
-    // this.harga,
-  });
+  const SelectChatView(
+      {super.key,
+      this.namaDokter,
+      this.spesialis,
+      this.chatId,
+      this.friendEmail,
+      this.totalUnread,
+      this.photo,
+      this.type,
+      this.status
+      // this.harga,
+      });
 
   @override
   State<SelectChatView> createState() => _SelectChatViewState();
@@ -49,8 +55,8 @@ class _SelectChatViewState extends State<SelectChatView> {
           });
           print(userMap);
         });
-        print("${widget.chatId}");
-        print("${widget.friendEmail}");
+        // print("${widget.chatId}");
+        // print("${widget.friendEmail}");
         controller.selectChat("${widget.chatId}", currentUser, userMap ?? {},
             "${widget.friendEmail}");
       },
@@ -66,11 +72,18 @@ class _SelectChatViewState extends State<SelectChatView> {
           children: [
             ClipRRect(
               borderRadius: BorderRadius.circular(8),
-              child: Image.asset(
-                'assets/picture/dokter.png',
-                width: 80,
-                height: 80,
-              ),
+              child: widget.photo != ""
+                  ? Image.network(
+                      "${widget.photo}",
+                      width: 80.0,
+                      height: 80.0,
+                      fit: BoxFit.cover,
+                    )
+                  : Image.asset(
+                      'assets/picture/dokter.png',
+                      width: 80.0,
+                      height: 80.0,
+                    ),
             ),
             const SizedBox(width: 14),
             Column(
@@ -78,23 +91,32 @@ class _SelectChatViewState extends State<SelectChatView> {
               children: [
                 const SizedBox(height: 4),
                 Text(
-                  // 'Dr. Ronald Richard',
                   "${widget.namaDokter}",
                   style: textStyleBlack.copyWith(
                       fontSize: 16, fontWeight: semiBold),
                 ),
+                widget.type == "doctor"
+                    ? Padding(
+                        padding: const EdgeInsets.only(top: 10.0),
+                        child: Text(
+                          "Spesialis ${widget.spesialis}",
+                          style: textStyleBlack.copyWith(
+                              fontSize: 11, fontWeight: medium),
+                        ),
+                      )
+                    : const SizedBox(height: 0),
                 const SizedBox(height: 10),
-                Text(
-                  'Spesialis Kulit',
-                  style:
-                      textStyleBlack.copyWith(fontSize: 11, fontWeight: medium),
-                ),
-                const SizedBox(height: 10),
-                Text(
-                  'Aktif',
-                  style: textStylePrimaryColor.copyWith(
-                      fontSize: 11, fontWeight: medium),
-                ),
+                widget.status == true
+                    ? Text(
+                        'Online',
+                        style: textStylePrimaryColor.copyWith(
+                            fontSize: 11, fontWeight: medium),
+                      )
+                    : Text(
+                        'Offline',
+                        style: textStylePrimaryColor.copyWith(
+                            fontSize: 11, fontWeight: medium),
+                      ),
                 // Text(
                 //   '3 Februari 2023',
                 //   style:
