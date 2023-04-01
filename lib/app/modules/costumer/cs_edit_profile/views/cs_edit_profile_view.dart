@@ -8,6 +8,7 @@ import 'package:online_consultation_app/app/data/app_session.dart';
 import '../../../../../theme.dart';
 import 'widgets/cs_button_row.dart';
 import '../controllers/cs_edit_profile_controller.dart';
+import 'widgets/cs_dropdown.dart';
 import 'widgets/cs_widget_input.dart';
 
 class CsEditProfileView extends StatefulWidget {
@@ -235,16 +236,31 @@ class _CsEditProfileView extends State<CsEditProfileView> {
                   ],
                 ),
                 const SizedBox(height: 15),
-                CsWidgetInput(
-                  label: "Pendidikan Terakhir",
-                  typeInputan: TextInputType.multiline,
-                  controlC: controller.pendidikanC,
+                // CsWidgetInput(
+                //   label: "Pendidikan Terakhir",
+                //   typeInputan: TextInputType.multiline,
+                //   controlC: controller.pendidikanC,
+                // ),
+                CsDropdown(
+                  hintText: "Pendidikan Terakhir",
+                  items: const [
+                    "SD",
+                    "SMP",
+                    "SMA",
+                    "Perguruan Tinggi",
+                  ],
                 ),
                 const SizedBox(height: 15),
-                CsWidgetInput(
-                  label: "Pekerjaan",
-                  typeInputan: TextInputType.multiline,
-                  controlC: controller.pekerjaanC,
+                CsDropdown(
+                  hintText: "Pekerjaan",
+                  items: const [
+                    "PNS",
+                    "POLRI/TNI",
+                    "Tenaga Kesehatan",
+                    "Guru/Dosen",
+                    "Wiraswasta",
+                    "Lain - Lain",
+                  ],
                 ),
                 const SizedBox(height: 20),
                 SizedBox(

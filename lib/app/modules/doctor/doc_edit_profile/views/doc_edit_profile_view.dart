@@ -236,7 +236,7 @@ class _DocEditProfileView extends State<DocEditProfileView> {
                 ),
                 const SizedBox(height: 15),
                 DocWidgetInput(
-                  label: "Pendidikan Terakhir",
+                  label: "Nama Kampus",
                   typeInputan: TextInputType.multiline,
                   controlC: controller.pendidikanC,
                 ),

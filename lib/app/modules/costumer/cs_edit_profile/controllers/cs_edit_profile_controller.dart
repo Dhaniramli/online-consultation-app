@@ -1,29 +1,47 @@
 import 'dart:io';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
-
 import '../../../../data/app_session.dart';
 
 class CsEditProfileController extends GetxController {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   late String emailC;
+  late String pendidikanC;
+  late String pekerjaanC;
 
   late TextEditingController fullNameC;
   late TextEditingController dateC;
   late TextEditingController kotaC;
   late TextEditingController noTelponC;
-  late TextEditingController pendidikanC;
-  late TextEditingController pekerjaanC;
   late ImagePicker pickerC;
 
   XFile? pickedImage = null;
 
   FirebaseStorage storage = FirebaseStorage.instance;
+
+  @override
+  void onInit() {
+    super.onInit();
+    emailC = Get.parameters['emailV'] ?? '';
+    fullNameC = TextEditingController();
+    dateC = TextEditingController();
+    kotaC = TextEditingController();
+    noTelponC = TextEditingController();
+    pickerC = ImagePicker();
+  }
+
+  @override
+  void onClose() {
+    fullNameC.dispose();
+    dateC.dispose();
+    kotaC.dispose();
+    noTelponC.dispose();
+    super.onClose();
+  }
 
   updatePhotoUrl(String url) async {
     CollectionReference users = _firestore.collection("users");
@@ -71,30 +89,6 @@ class CsEditProfileController extends GetxController {
     }
   }
 
-  @override
-  void onInit() {
-    super.onInit();
-    emailC = Get.parameters['emailV'] ?? '';
-    fullNameC = TextEditingController();
-    dateC = TextEditingController();
-    kotaC = TextEditingController();
-    noTelponC = TextEditingController();
-    pendidikanC = TextEditingController();
-    pekerjaanC = TextEditingController();
-    pickerC = ImagePicker();
-  }
-
-  @override
-  void onClose() {
-    fullNameC.dispose();
-    dateC.dispose();
-    kotaC.dispose();
-    noTelponC.dispose();
-    pendidikanC.dispose();
-    pekerjaanC.dispose();
-    super.onClose();
-  }
-
   int valueC = 0;
   late String jenderC;
   void setGender(int? value) {
@@ -114,8 +108,8 @@ class CsEditProfileController extends GetxController {
         kotaC.text.isNotEmpty &&
         jenderC.isNotEmpty &&
         noTelponC.text.isNotEmpty &&
-        pendidikanC.text.isNotEmpty &&
-        pekerjaanC.text.isNotEmpty) {
+        pendidikanC.isNotEmpty &&
+        pekerjaanC.isNotEmpty) {
       try {
         await _firestore.collection("users").doc(emailC).update({
           "fullName": fullNameC.text,
@@ -123,8 +117,8 @@ class CsEditProfileController extends GetxController {
           "kota": kotaC.text,
           "jender": jenderC,
           "noTelpon": noTelponC.text,
-          "pendidikanTerakhir": pendidikanC.text,
-          "pekerjaan": pekerjaanC.text,
+          "pendidikanTerakhir": pendidikanC,
+          "pekerjaan": pekerjaanC,
         });
         Get.back();
       } catch (err) {
