@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 
 import '../../../../../theme.dart';
 import '../../../../data/app_session.dart';
+import '../../../change_pass/views/change_pass_view.dart';
 import '../../doc_my_profile/views/doc_my_profile_view.dart';
 import '../controllers/doc_profile_controller.dart';
 
@@ -111,9 +112,7 @@ class DocProfileView extends GetView<DocProfileController> {
 
     Widget ubahSandi() {
       return GestureDetector(
-        onTap: () {
-          Navigator.pushNamed(context, 'editSandi');
-        },
+        onTap: () => Get.to(() => ChangePassView()),
         child: Container(
           height: 60,
           margin: const EdgeInsets.only(top: 20, left: 15, right: 15),
