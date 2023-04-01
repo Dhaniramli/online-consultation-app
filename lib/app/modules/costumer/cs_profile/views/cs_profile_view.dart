@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import '../../../../../theme.dart';
 import '../../../../controllers/user_controller.dart';
 import '../../../../data/app_session.dart';
+import '../../../change_pass/views/change_pass_view.dart';
 import '../../cs_my_profile/views/cs_my_profile_view.dart';
 import '../controllers/cs_profile_controller.dart';
 
@@ -113,7 +114,7 @@ class CsProfileView extends GetView<CsProfileController> {
     Widget ubahSandi() {
       return GestureDetector(
         onTap: () {
-          Navigator.pushNamed(context, 'editSandi');
+          Get.to(()=> ChangePassView());
         },
         child: Container(
           height: 60,

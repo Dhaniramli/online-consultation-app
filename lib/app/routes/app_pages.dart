@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
 
+import '../modules/change_pass/bindings/change_pass_binding.dart';
+import '../modules/change_pass/views/change_pass_view.dart';
 import '../modules/costumer/cs_chat/bindings/cs_chat_binding.dart';
 import '../modules/costumer/cs_chat/views/cs_chat_view.dart';
 import '../modules/costumer/cs_home/bindings/cs_home_binding.dart';
@@ -8,12 +10,12 @@ import '../modules/costumer/cs_main_navigation/bindings/cs_main_navigation_bindi
 import '../modules/costumer/cs_main_navigation/views/cs_main_navigation_view.dart';
 import '../modules/costumer/cs_my_profile/bindings/cs_my_profile_binding.dart';
 import '../modules/costumer/cs_my_profile/views/cs_my_profile_view.dart';
-import '../modules/doctor/doc_my_profile/bindings/doc_my_profile_binding.dart';
-import '../modules/doctor/doc_my_profile/views/doc_my_profile_view.dart';
 import '../modules/doctor/doc_chat/bindings/doc_chat_binding.dart';
 import '../modules/doctor/doc_chat/views/doc_chat_view.dart';
 import '../modules/doctor/doc_main_navigation/bindings/doc_main_navigation_binding.dart';
 import '../modules/doctor/doc_main_navigation/views/doc_main_navigation_view.dart';
+import '../modules/doctor/doc_my_profile/bindings/doc_my_profile_binding.dart';
+import '../modules/doctor/doc_my_profile/views/doc_my_profile_view.dart';
 import '../modules/doctor/doc_profile/bindings/doc_profile_binding.dart';
 import '../modules/doctor/doc_profile/views/doc_profile_view.dart';
 import '../modules/home/bindings/home_binding.dart';
@@ -90,6 +92,11 @@ class AppPages {
       name: _Paths.DOC_MY_PROFILE,
       page: () => const DocMyProfileView(),
       binding: DocMyProfileBinding(),
+    ),
+    GetPage(
+      name: _Paths.CHANGE_PASS,
+      page: () => const ChangePassView(),
+      binding: ChangePassBinding(),
     ),
   ];
 }

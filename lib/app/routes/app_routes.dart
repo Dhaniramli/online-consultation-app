@@ -26,6 +26,7 @@ abstract class Routes {
   static const CS_DETAIL_DOCTOR = _Paths.CS_DETAIL_DOCTOR;
   static const DOC_MY_PROFILE = _Paths.DOC_MY_PROFILE;
   static const DOC_EDIT_PROFILE = _Paths.DOC_EDIT_PROFILE;
+  static const CHANGE_PASS = _Paths.CHANGE_PASS;
 }
 
 abstract class _Paths {
@@ -53,4 +54,5 @@ abstract class _Paths {
   static const CS_DETAIL_DOCTOR = '/cs-detail-doctor';
   static const DOC_MY_PROFILE = '/doc-my-profile';
   static const DOC_EDIT_PROFILE = '/doc-edit-profile';
+  static const CHANGE_PASS = '/change-pass';
 }

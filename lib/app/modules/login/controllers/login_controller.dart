@@ -42,13 +42,13 @@ class LoginController extends GetxController {
                   print('Data dari dokumen ${emailC.text}');
                   print('Nama: ${data['type']}');
                   Get.offAllNamed(Routes.CS_MAIN_NAVIGATION);
-                  emailC.clear();
-                  passwordC.clear();
                   if (data['type'] == 'patient') {
                     Get.offAllNamed(Routes.CS_MAIN_NAVIGATION);
                   } else if (data['type'] == 'doctor') {
                     Get.offAllNamed(Routes.DOC_MAIN_NAVIGATION);
                   }
+                  emailC.clear();
+                  passwordC.clear();
                 } else {
                   // Data tidak sesuai kriteria
                   print('Email belum terdaftar');
