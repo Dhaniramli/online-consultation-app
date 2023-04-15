@@ -9,7 +9,6 @@ class CsDetailDoctorController extends GetxController {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   final FirebaseAuth _auth = FirebaseAuth.instance;
   late String namaDokterC;
-  // late String emailC;
   Map<String, dynamic>? userMap;
   late String roomId;
 
@@ -67,11 +66,8 @@ class CsDetailDoctorController extends GetxController {
         "lastTime": date,
       });
 
-      // final listChats =
-      //     await users.doc(_auth.currentUser!.email).collection("chats").get();
       chat_id = newChatDoc.id;
     }
-    // await selectUser();
     print("Chat ID $chat_id");
 
     print("${userMap?["email"]}");

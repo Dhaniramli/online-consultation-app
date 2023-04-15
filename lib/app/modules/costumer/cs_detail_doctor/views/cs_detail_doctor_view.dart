@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../../../theme.dart';
+import '../../../../routes/app_pages.dart';
+import '../../cs_quiz/views/cs_quiz_view.dart';
 import '../controllers/cs_detail_doctor_controller.dart';
 
 class CsDetailDoctorView extends GetView<CsDetailDoctorController> {
@@ -22,6 +24,15 @@ class CsDetailDoctorView extends GetView<CsDetailDoctorController> {
         preferredSize: const Size.fromHeight(60),
         child: AppBar(
           backgroundColor: primaryColor,
+          leading: IconButton(
+              onPressed: () {
+                Get.back();
+              },
+              icon: Image.asset(
+                'assets/picture/panah_kiri.png',
+                width: 30,
+                height: 30,
+              )),
         ),
       );
     }
@@ -62,7 +73,9 @@ class CsDetailDoctorView extends GetView<CsDetailDoctorController> {
             ),
             const SizedBox(height: 5),
             Text(
-              userMap?['spesialis'] != ""? "Spesialis ${userMap?['spesialis']}" : "Spesialis...",
+              userMap?['spesialis'] != ""
+                  ? "Spesialis ${userMap?['spesialis']}"
+                  : "Spesialis...",
               style: textStyleGrey.copyWith(fontSize: 16, fontWeight: semiBold),
             )
           ],
@@ -113,37 +126,37 @@ class CsDetailDoctorView extends GetView<CsDetailDoctorController> {
                 ),
               ),
               const SizedBox(height: 15),
-              Container(
-                height: 100,
-                width: double.infinity,
-                padding: const EdgeInsets.all(15),
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8),
-                    color: white,
-                    boxShadow: [
-                      BoxShadow(
-                          color: Colors.black.withOpacity(0.2),
-                          spreadRadius: 0,
-                          blurRadius: 1.5,
-                          offset: const Offset(0, 0))
-                    ]),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Tempat Praktik',
-                      style: textStyleBlack.copyWith(
-                          fontSize: 16, fontWeight: semiBold),
-                    ),
-                    const SizedBox(height: 10),
-                    Text(
-                      // 'Praktek Mandiri Dr. Ronald Richard, Makassar',
-                      userMap?['fullName'],
-                      style: textStyleBlack.copyWith(fontSize: 15),
-                    ),
-                  ],
-                ),
-              ),
+              // Container(
+              //   height: 100,
+              //   width: double.infinity,
+              //   padding: const EdgeInsets.all(15),
+              //   decoration: BoxDecoration(
+              //       borderRadius: BorderRadius.circular(8),
+              //       color: white,
+              //       boxShadow: [
+              //         BoxShadow(
+              //             color: Colors.black.withOpacity(0.2),
+              //             spreadRadius: 0,
+              //             blurRadius: 1.5,
+              //             offset: const Offset(0, 0))
+              //       ]),
+              //   child: Column(
+              //     crossAxisAlignment: CrossAxisAlignment.start,
+              //     children: [
+              //       Text(
+              //         'Tempat Praktik',
+              //         style: textStyleBlack.copyWith(
+              //             fontSize: 16, fontWeight: semiBold),
+              //       ),
+              //       const SizedBox(height: 10),
+              //       Text(
+              //         // 'Praktek Mandiri Dr. Ronald Richard, Makassar',
+              //         userMap?['fullName'],
+              //         style: textStyleBlack.copyWith(fontSize: 15),
+              //       ),
+              //     ],
+              //   ),
+              // ),
             ],
           ),
         ),
@@ -192,8 +205,9 @@ class CsDetailDoctorView extends GetView<CsDetailDoctorController> {
               height: 44,
               width: 150,
               child: TextButton(
-                onPressed: () async {
-                  controller.selectUser();
+                onPressed: () {
+                  // controller.selectUser();
+                  Get.to(() => CsQuizView(userMap: userMap));
                 },
                 style: TextButton.styleFrom(
                   padding: const EdgeInsets.symmetric(horizontal: 25),

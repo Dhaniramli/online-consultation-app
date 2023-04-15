@@ -2,21 +2,32 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
+import '../../../../../theme.dart';
 import '../controllers/doc_home_controller.dart';
+import 'widgets/doc_button_home.dart';
 
 class DocHomeView extends GetView<DocHomeController> {
   const DocHomeView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('DocHomeView'),
-        centerTitle: true,
-      ),
-      body: const Center(
-        child: Text(
-          'DocHomeView is working',
-          style: TextStyle(fontSize: 20),
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: primaryColor,
+          title: Text("Dashboard"),
+        ),
+        body: Container(
+          padding: const EdgeInsets.all(15),
+          child: Column(
+            children: [
+              Row(
+                children: [
+                  DocButtonHome(),
+                  const SizedBox(width: 15),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );

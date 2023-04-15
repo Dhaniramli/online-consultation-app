@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
 import 'package:online_consultation_app/app/data/app_session.dart';
 import 'package:online_consultation_app/app/modules/select_chat/views/select_chat_view.dart';

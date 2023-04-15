@@ -17,12 +17,21 @@ class ChangePassView extends GetView<ChangePassController> {
       return PreferredSize(
         preferredSize: const Size.fromHeight(60),
         child: AppBar(
-            backgroundColor: primaryColor,
-            title: Text(
-              'Ubah Kata Sandi',
-              style:
-                  textWhiteStyle.copyWith(fontSize: 19, fontWeight: semiBold),
-            )),
+          backgroundColor: primaryColor,
+          title: Text(
+            'Ubah Kata Sandi',
+            style: textWhiteStyle.copyWith(fontSize: 19, fontWeight: semiBold),
+          ),
+          leading: IconButton(
+              onPressed: () {
+                Get.back();
+              },
+              icon: Image.asset(
+                'assets/picture/panah_kiri.png',
+                width: 30,
+                height: 30,
+              )),
+        ),
       );
     }
 

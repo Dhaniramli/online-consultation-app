@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
@@ -17,8 +16,8 @@ class DocEditProfileController extends GetxController {
   late TextEditingController kotaC;
   late TextEditingController noTelponC;
   late TextEditingController pendidikanC;
-  late TextEditingController spesialisC;
   late ImagePicker pickerC;
+  late String spesialisC;
 
   XFile? pickedImage = null;
 
@@ -80,7 +79,6 @@ class DocEditProfileController extends GetxController {
     noTelponC = TextEditingController();
     pickerC = ImagePicker();
     pendidikanC = TextEditingController();
-    spesialisC = TextEditingController();
   }
 
   @override
@@ -90,7 +88,6 @@ class DocEditProfileController extends GetxController {
     kotaC.dispose();
     noTelponC.dispose();
     pendidikanC.dispose();
-    spesialisC.dispose();
     super.onClose();
   }
 
@@ -113,7 +110,7 @@ class DocEditProfileController extends GetxController {
         kotaC.text.isNotEmpty &&
         jenderC.isNotEmpty &&
         noTelponC.text.isNotEmpty &&
-        spesialisC.text.isNotEmpty &&
+        spesialisC.isNotEmpty &&
         pendidikanC.text.isNotEmpty) {
       try {
         await _firestore.collection("users").doc(emailC).update({
@@ -123,7 +120,7 @@ class DocEditProfileController extends GetxController {
           "kota": kotaC.text,
           "jender": jenderC,
           "noTelpon": noTelponC.text,
-          "spesialis": spesialisC.text,
+          "spesialis": spesialisC,
           "pendidikanTerakhir": pendidikanC.text,
         });
         Get.back();

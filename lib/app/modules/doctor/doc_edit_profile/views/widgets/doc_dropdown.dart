@@ -2,10 +2,10 @@ import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../../../../theme.dart';
-import '../../controllers/cs_edit_profile_controller.dart';
+import '../../controllers/doc_edit_profile_controller.dart';
 
-class CsDropdown extends StatelessWidget {
-  CsDropdown({
+class DocDropdown extends StatelessWidget {
+  DocDropdown({
     super.key,
     required this.hintText,
     required this.items,
@@ -18,7 +18,7 @@ class CsDropdown extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(CsEditProfileController());
+    final controller = Get.put(DocEditProfileController());
     return Container(
       height: 56,
       padding: const EdgeInsets.only(right: 10.0, left: 20.0, top: 5.0),
@@ -30,6 +30,9 @@ class CsDropdown extends StatelessWidget {
           // disabledItemFn: (String s) => s.startsWith('I'),
         ),
         items: items,
+        clearButtonProps: ClearButtonProps(
+          isVisible: true,
+        ),
         dropdownDecoratorProps: DropDownDecoratorProps(
           dropdownSearchDecoration: InputDecoration(
             enabledBorder: const UnderlineInputBorder(
@@ -41,7 +44,7 @@ class CsDropdown extends StatelessWidget {
           ),
         ),
         // selectedItem: "SD",
-        onChanged: valueC
+        onChanged: valueC,
       ),
     );
   }

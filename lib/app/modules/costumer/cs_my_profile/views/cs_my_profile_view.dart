@@ -15,6 +15,15 @@ class CsMyProfileView extends GetView<CsMyProfileController> {
         preferredSize: const Size.fromHeight(60),
         child: AppBar(
             backgroundColor: primaryColor,
+            leading: IconButton(
+                onPressed: () {
+                  Get.back();
+                },
+                icon: Image.asset(
+                  'assets/picture/panah_kiri.png',
+                  width: 30,
+                  height: 30,
+                )),
             title: Text(
               'Profile Saya',
               style:

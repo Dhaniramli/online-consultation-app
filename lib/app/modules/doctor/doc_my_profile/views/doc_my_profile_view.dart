@@ -15,12 +15,21 @@ class DocMyProfileView extends GetView<DocMyProfileController> {
       return PreferredSize(
         preferredSize: const Size.fromHeight(60),
         child: AppBar(
-            backgroundColor: primaryColor,
-            title: Text(
-              'Profile Saya',
-              style:
-                  textWhiteStyle.copyWith(fontSize: 19, fontWeight: semiBold),
-            )),
+          backgroundColor: primaryColor,
+          title: Text(
+            'Profile Saya',
+            style: textWhiteStyle.copyWith(fontSize: 19, fontWeight: semiBold),
+          ),
+          leading: IconButton(
+              onPressed: () {
+                Get.back();
+              },
+              icon: Image.asset(
+                'assets/picture/panah_kiri.png',
+                width: 30,
+                height: 30,
+              )),
+        ),
       );
     }
 
@@ -29,7 +38,7 @@ class DocMyProfileView extends GetView<DocMyProfileController> {
         stream: userCollection.snapshots(),
         builder: (context, snapshot) {
           if (snapshot.hasError) return const Center(child: Text("Error"));
-          if (!snapshot.hasData) return LoadingView();
+          if (!snapshot.hasData) return const Center(child: Text("No data"));
           if (snapshot.data!.data != null) {
             Map<String, dynamic> item =
                 (snapshot.data!.data() as Map<String, dynamic>);

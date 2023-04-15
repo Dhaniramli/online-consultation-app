@@ -7,6 +7,7 @@ import '../../../../../theme.dart';
 import '../../../../data/app_session.dart';
 import '../controllers/doc_edit_profile_controller.dart';
 import 'widgets/doc_button_row.dart';
+import 'widgets/doc_dropdown.dart';
 import 'widgets/doc_widget_input.dart';
 
 class DocEditProfileView extends StatefulWidget {
@@ -37,6 +38,15 @@ class _DocEditProfileView extends State<DocEditProfileView> {
             'Ubah Data Pribadi',
             style: textWhiteStyle.copyWith(fontSize: 19, fontWeight: semiBold),
           ),
+          leading: IconButton(
+              onPressed: () {
+                Get.back();
+              },
+              icon: Image.asset(
+                'assets/picture/panah_kiri.png',
+                width: 30,
+                height: 30,
+              )),
         ),
       );
     }
@@ -240,10 +250,17 @@ class _DocEditProfileView extends State<DocEditProfileView> {
                   controlC: controller.pendidikanC,
                 ),
                 const SizedBox(height: 15),
-                DocWidgetInput(
-                  label: "Spesialis",
-                  typeInputan: TextInputType.multiline,
-                  controlC: controller.spesialisC,
+                DocDropdown(
+                  hintText: "Spesialis",
+                  items: const [
+                    "Hipertensi",
+                    "Diabetes Melitus",
+                  ],
+                  valueC: (value) {
+                    if (value != null) {
+                      controller.spesialisC = value;
+                    }
+                  },
                 ),
                 const SizedBox(height: 20),
                 SizedBox(

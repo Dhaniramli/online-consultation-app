@@ -39,6 +39,15 @@ class _CsEditProfileView extends State<CsEditProfileView> {
             'Ubah Data Pribadi',
             style: textWhiteStyle.copyWith(fontSize: 19, fontWeight: semiBold),
           ),
+          leading: IconButton(
+              onPressed: () {
+                Get.back();
+              },
+              icon: Image.asset(
+                'assets/picture/panah_kiri.png',
+                width: 30,
+                height: 30,
+              )),
         ),
       );
     }
@@ -249,6 +258,12 @@ class _CsEditProfileView extends State<CsEditProfileView> {
                     "SMA",
                     "Perguruan Tinggi",
                   ],
+                  valueC: (value) {
+                    if (value != null) {
+                      print(value);
+                      controller.pendidikanC = value;
+                    }
+                  },
                 ),
                 const SizedBox(height: 15),
                 CsDropdown(
@@ -261,6 +276,12 @@ class _CsEditProfileView extends State<CsEditProfileView> {
                     "Wiraswasta",
                     "Lain - Lain",
                   ],
+                  valueC: (value) {
+                    if (value != null) {
+                      print(value);
+                      controller.pekerjaanC = value;
+                    }
+                  },
                 ),
                 const SizedBox(height: 20),
                 SizedBox(

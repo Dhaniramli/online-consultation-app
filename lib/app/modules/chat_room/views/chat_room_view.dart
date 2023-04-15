@@ -90,6 +90,8 @@ class ChatRoomView extends GetView<ChatRoomController> {
                         children: [
                           Text(
                             "${dataFriend["fullName"]}",
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
                             style: textWhiteStyle.copyWith(
                                 fontWeight: medium, fontSize: 14),
                           ),
