@@ -3,8 +3,10 @@ import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:online_consultation_app/app/data/app_session.dart';
+import 'package:online_consultation_app/app/modules/costumer/cs_home/views/cs_home_view.dart';
 import '../../../../theme.dart';
 import '../../../controllers/user_controller.dart';
+import '../../../routes/app_pages.dart';
 import '../controllers/chat_room_controller.dart';
 
 class ChatRoomView extends GetView<ChatRoomController> {
@@ -32,6 +34,7 @@ class ChatRoomView extends GetView<ChatRoomController> {
           backgroundColor: primaryColor,
           leading: IconButton(
               onPressed: () {
+                // Get.offAllNamed(Routes.CS_MAIN_NAVIGATION);
                 Get.back();
               },
               icon: Image.asset(

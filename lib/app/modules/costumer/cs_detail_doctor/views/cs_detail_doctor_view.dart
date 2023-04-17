@@ -206,8 +206,8 @@ class CsDetailDoctorView extends GetView<CsDetailDoctorController> {
               width: 150,
               child: TextButton(
                 onPressed: () {
-                  // controller.selectUser();
-                  Get.to(() => CsQuizView(userMap: userMap));
+                  controller.selectUser();
+                  // Get.to(() => CsQuizView(userMap: userMap));
                 },
                 style: TextButton.styleFrom(
                   padding: const EdgeInsets.symmetric(horizontal: 25),

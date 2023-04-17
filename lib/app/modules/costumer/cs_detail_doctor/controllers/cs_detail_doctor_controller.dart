@@ -3,80 +3,99 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import '../../../../data/app_session.dart';
 import '../../../chat_room/views/chat_room_view.dart';
+import '../../cs_quiz/views/cs_quiz_view.dart';
 
 class CsDetailDoctorController extends GetxController {
   bool flagNewConnection = false;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   final FirebaseAuth _auth = FirebaseAuth.instance;
   late String namaDokterC;
+  // late String emailC;
   Map<String, dynamic>? userMap;
   late String roomId;
 
   var chat_id;
 
   selectUser() async {
-    String date = DateTime.now().toIso8601String();
-    CollectionReference chats = _firestore.collection("chats");
-    CollectionReference users = _firestore.collection("users");
+    try {
+      String date = DateTime.now().toIso8601String();
+      CollectionReference chats = _firestore.collection("chats");
+      CollectionReference users = _firestore.collection("users");
 
-    final doChats = await users.doc(currentUser).collection("chats").get();
+      final doChats =
+          await users.doc(_auth.currentUser!.email).collection("chats").get();
 
-    if (doChats.docs.length != 0) {
-      final checkConnection = await users
-          .doc(currentUser)
-          .collection("chats")
-          .where("connection", isEqualTo: userMap?["email"])
-          .get();
+      if (doChats.docs.isNotEmpty) {
+        final checkConnection = await users
+            .doc(_auth.currentUser!.email)
+            .collection("chats")
+            .where("connection", isEqualTo: userMap?["email"])
+            .get();
 
-      if (checkConnection.docs.length != 0) {
-        flagNewConnection = false;
+        if (checkConnection.docs.isNotEmpty) {
+          flagNewConnection = false;
 
-        //chat_id from chats collection
-        checkConnection.docs[0].id;
+          //chat_id from chats collection
+          checkConnection.docs[0].id;
+        } else {
+          flagNewConnection = true;
+          // belum pernah chat dengan dokter
+        }
       } else {
         flagNewConnection = true;
-        // belum pernah chat dengan dokter
       }
-    } else {
-      flagNewConnection = true;
-    }
 
-    if (flagNewConnection) {
-      final newChatDoc = await chats.add(
-        {
-          "connections": [
-            _auth.currentUser!.email,
-            userMap?["email"],
-          ],
+      if (flagNewConnection) {
+        final newChatDoc = await chats.add(
+          {
+            "connections": [
+              _auth.currentUser!.email,
+              userMap?["email"],
+            ],
+            "lastTime": date,
+          },
+        );
+
+        // ignore: await_only_futures
+        await chats.doc(newChatDoc.id).collection("chats");
+
+        await users
+            .doc(_auth.currentUser!.email)
+            .collection("chats")
+            .doc(newChatDoc.id)
+            .set({
+          "connection": userMap?["email"],
+          "chat_id": newChatDoc,
+          "total_unread": 0,
           "lastTime": date,
-        },
-      );
+        });
 
-      // ignore: await_only_futures
-      await chats.doc(newChatDoc.id).collection("chats");
+        chat_id = newChatDoc.id;
+      }
 
-      await users
-          .doc(_auth.currentUser!.email)
-          .collection("chats")
-          .doc(newChatDoc.id)
-          .set({
-        "connection": userMap?["email"],
-        "chat_id": newChatDoc,
-        "total_unread": 0,
-        "lastTime": date,
-      });
+      print("Chat ID $chat_id");
 
-      chat_id = newChatDoc.id;
+      print("${userMap?["email"]}");
+
+      if (userMap!['spesialis'] != null) {
+        Get.to(
+          () => CsQuizView(
+            userMap: userMap!,
+            chatRoomid: "$chat_id",
+          ),
+        );
+      } else {
+        Get.to(
+          () => ChatRoomView(
+            userMap: userMap,
+            chatRoomid: "$chat_id",
+            friendEmail: userMap?["email"],
+          ),
+        );
+      }
+    } on Exception catch (err) {
+      print(err);
+      print("TERJADI KESALAHAN");
     }
-    print("Chat ID $chat_id");
-
-    print("${userMap?["email"]}");
-    Get.to(
-      ChatRoomView(
-        userMap: userMap,
-        chatRoomid: "$chat_id",
-        friendEmail: userMap?["email"],
-      ),
-    );
   }
 }
