@@ -27,8 +27,6 @@ abstract class Routes {
   static const DOC_MY_PROFILE = _Paths.DOC_MY_PROFILE;
   static const DOC_EDIT_PROFILE = _Paths.DOC_EDIT_PROFILE;
   static const CHANGE_PASS = _Paths.CHANGE_PASS;
-  static const DOC_QUIZ_MAKER = _Paths.DOC_QUIZ_MAKER;
-  static const DOC_QUIZ_LIST = _Paths.DOC_QUIZ_LIST;
   static const CS_QUIZ = _Paths.CS_QUIZ;
 }
 
@@ -58,7 +56,5 @@ abstract class _Paths {
   static const DOC_MY_PROFILE = '/doc-my-profile';
   static const DOC_EDIT_PROFILE = '/doc-edit-profile';
   static const CHANGE_PASS = '/change-pass';
-  static const DOC_QUIZ_MAKER = '/doc-quiz-maker';
-  static const DOC_QUIZ_LIST = '/doc-quiz-list';
   static const CS_QUIZ = '/cs-quiz';
 }

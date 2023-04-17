@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
-
 import '../../../../../theme.dart';
 import '../controllers/doc_home_controller.dart';
-import 'widgets/doc_button_home.dart';
 
 class DocHomeView extends GetView<DocHomeController> {
   const DocHomeView({Key? key}) : super(key: key);
@@ -21,10 +18,7 @@ class DocHomeView extends GetView<DocHomeController> {
           child: Column(
             children: [
               Row(
-                children: [
-                  DocButtonHome(),
-                  const SizedBox(width: 15),
-                ],
+                children: [],
               ),
             ],
           ),

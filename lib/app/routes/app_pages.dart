@@ -17,10 +17,6 @@ import '../modules/doctor/doc_my_profile/bindings/doc_my_profile_binding.dart';
 import '../modules/doctor/doc_my_profile/views/doc_my_profile_view.dart';
 import '../modules/doctor/doc_profile/bindings/doc_profile_binding.dart';
 import '../modules/doctor/doc_profile/views/doc_profile_view.dart';
-import '../modules/doctor/doc_quiz_list/bindings/doc_quiz_list_binding.dart';
-import '../modules/doctor/doc_quiz_list/views/doc_quiz_list_view.dart';
-import '../modules/doctor/doc_quiz_maker/bindings/doc_quiz_maker_binding.dart';
-import '../modules/doctor/doc_quiz_maker/views/doc_quiz_maker_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/login/bindings/login_binding.dart';
@@ -100,16 +96,6 @@ class AppPages {
       name: _Paths.CHANGE_PASS,
       page: () => const ChangePassView(),
       binding: ChangePassBinding(),
-    ),
-    GetPage(
-      name: _Paths.DOC_QUIZ_MAKER,
-      page: () => const DocQuizMakerView(),
-      binding: DocQuizMakerBinding(),
-    ),
-    GetPage(
-      name: _Paths.DOC_QUIZ_LIST,
-      page: () => const DocQuizListView(),
-      binding: DocQuizListBinding(),
     ),
   ];
 }
