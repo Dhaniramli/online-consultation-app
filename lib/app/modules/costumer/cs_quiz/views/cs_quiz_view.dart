@@ -21,7 +21,8 @@ class CsQuizView extends StatefulWidget {
   State<CsQuizView> createState() => _CsQuizViewState();
 }
 
-class _CsQuizViewState extends State<CsQuizView> {
+class _CsQuizViewState extends State<CsQuizView>
+    with AutomaticKeepAliveClientMixin<CsQuizView> {
   final FirebaseFirestore firestore = FirebaseFirestore.instance;
   final controller = Get.put(CsQuizController());
   String optionSelected = "";
@@ -31,7 +32,11 @@ class _CsQuizViewState extends State<CsQuizView> {
   List<String> options = [];
 
   @override
+  bool get wantKeepAlive => true;
+
+  @override
   Widget build(BuildContext context) {
+    super.build(context);
     controller.roomId = widget.chatRoomid;
     controller.userMap = widget.userMap;
 
@@ -48,6 +53,8 @@ class _CsQuizViewState extends State<CsQuizView> {
             final data = snapshot.data!;
             controller.jumlahData = data.docs.length;
             return ListView.builder(
+              addAutomaticKeepAlives: true,
+              addRepaintBoundaries: true,
               padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
               itemCount: data.docs.length,
               itemBuilder: (context, index) {

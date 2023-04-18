@@ -35,12 +35,18 @@ class QuizPlayTile extends StatefulWidget {
   State<QuizPlayTile> createState() => _QuizPlayTileState();
 }
 
-class _QuizPlayTileState extends State<QuizPlayTile> {
+class _QuizPlayTileState extends State<QuizPlayTile>
+    with AutomaticKeepAliveClientMixin<QuizPlayTile> {
   String? lastOptionSelected;
+
+  @override
+  bool get wantKeepAlive => true;
 
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(CsQuizController());
+
+    super.build(context);
 
     return Container(
       child: Column(
