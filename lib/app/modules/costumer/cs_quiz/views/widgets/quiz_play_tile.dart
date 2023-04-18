@@ -56,6 +56,13 @@ class _QuizPlayTileState extends State<QuizPlayTile> {
                   onTap: () {
                     setState(() {
                       lastOptionSelected = widget.option1!;
+                      controller.sendAnswerToFirestore(
+                        widget.spesialis.toString(),
+                        widget.email.toString(),
+                        widget.questionPlay.toString(),
+                        lastOptionSelected.toString(),
+                        widget.index!,
+                      );
                     });
                     widget.optionSelectedPlay = widget.option1!;
                   },
@@ -76,6 +83,13 @@ class _QuizPlayTileState extends State<QuizPlayTile> {
                   onTap: () {
                     setState(() {
                       lastOptionSelected = widget.option2;
+                      controller.sendAnswerToFirestore(
+                        widget.spesialis.toString(),
+                        widget.email.toString(),
+                        widget.questionPlay.toString(),
+                        lastOptionSelected.toString(),
+                        widget.index!,
+                      );
                     });
                     widget.optionSelectedPlay = widget.option2!;
                   },
@@ -96,6 +110,13 @@ class _QuizPlayTileState extends State<QuizPlayTile> {
                   onTap: () {
                     setState(() {
                       lastOptionSelected = widget.option3;
+                      controller.sendAnswerToFirestore(
+                        widget.spesialis.toString(),
+                        widget.email.toString(),
+                        widget.questionPlay.toString(),
+                        lastOptionSelected.toString(),
+                        widget.index!,
+                      );
                     });
                     widget.optionSelectedPlay = widget.option3!;
                   },
@@ -116,6 +137,13 @@ class _QuizPlayTileState extends State<QuizPlayTile> {
                   onTap: () {
                     setState(() {
                       lastOptionSelected = widget.option4;
+                      controller.sendAnswerToFirestore(
+                        widget.spesialis.toString(),
+                        widget.email.toString(),
+                        widget.questionPlay.toString(),
+                        lastOptionSelected.toString(),
+                        widget.index!,
+                      );
                     });
                     widget.optionSelectedPlay = widget.option4!;
                   },
@@ -136,6 +164,13 @@ class _QuizPlayTileState extends State<QuizPlayTile> {
                   onTap: () {
                     setState(() {
                       lastOptionSelected = widget.option5;
+                      controller.sendAnswerToFirestore(
+                        widget.spesialis.toString(),
+                        widget.email.toString(),
+                        widget.questionPlay.toString(),
+                        lastOptionSelected.toString(),
+                        widget.index!,
+                      );
                     });
                     widget.optionSelectedPlay = widget.option5!;
                   },
