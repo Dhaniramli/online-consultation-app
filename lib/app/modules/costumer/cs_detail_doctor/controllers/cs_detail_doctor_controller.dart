@@ -77,7 +77,8 @@ class CsDetailDoctorController extends GetxController {
 
       print("${userMap?["email"]}");
 
-      if (userMap!['spesialis'] != null) {
+      // MENAMBAHKAN KONDISI DIMANA JIKA SPESIALIS DOKTER BELUM ADA MAKA AKAN LANGSUNG CHAT
+      if (userMap!['spesialis'] != "") {
         Get.to(
           () => CsQuizView(
             userMap: userMap!,

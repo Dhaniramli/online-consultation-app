@@ -107,7 +107,7 @@ class CsHomeView extends GetView<CsHomeController> {
               color: bgColor1,
               child: CsSelectDoctorView(
                 doctorName: "${controller.tempSearch[index]["fullName"]}",
-                specialist: "${controller.tempSearch[index]["fullName"]}",
+                specialist: "${controller.tempSearch[index]["spesialis"]}",
                 email: "${controller.tempSearch[index]["email"]}",
                 photo: "${controller.tempSearch[index]["photo"]}",
               ),

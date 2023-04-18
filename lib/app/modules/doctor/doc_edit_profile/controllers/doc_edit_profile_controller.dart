@@ -121,6 +121,7 @@ class DocEditProfileController extends GetxController {
           "jender": jenderC,
           "noTelpon": noTelponC.text,
           "spesialis": spesialisC,
+          "keySpesialis": spesialisC.substring(0, 1).toUpperCase(),
           "pendidikanTerakhir": pendidikanC.text,
         });
         Get.back();

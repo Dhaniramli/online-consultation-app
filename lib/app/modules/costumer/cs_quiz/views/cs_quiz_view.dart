@@ -64,6 +64,8 @@ class _CsQuizViewState extends State<CsQuizView> {
 
                 options.shuffle();
 
+                final nomor = index + 1;
+
                 return QuizPlayTile(
                   questionPlay: item['pertanyaan'],
                   descriptionPlay: description,
@@ -75,7 +77,7 @@ class _CsQuizViewState extends State<CsQuizView> {
                   option5: options[4],
                   email: currentUser,
                   spesialis: widget.userMap["spesialis"],
-                  index: nomor++,
+                  index: nomor,
                 );
               },
             );

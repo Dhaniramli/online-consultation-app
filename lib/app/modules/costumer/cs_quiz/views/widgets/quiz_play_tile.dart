@@ -36,6 +36,8 @@ class QuizPlayTile extends StatefulWidget {
 }
 
 class _QuizPlayTileState extends State<QuizPlayTile> {
+  String? lastOptionSelected;
+
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(CsQuizController());
@@ -53,17 +55,18 @@ class _QuizPlayTileState extends State<QuizPlayTile> {
               ? GestureDetector(
                   onTap: () {
                     setState(() {
-                      widget.optionSelectedPlay = widget.option1!;
+                      lastOptionSelected = widget.option1!;
                     });
+                    widget.optionSelectedPlay = widget.option1!;
                   },
                   child: OptionTile(
                     question: widget.questionPlay,
                     description: widget.option1,
-                    option: "A",
                     optionSelected: widget.optionSelectedPlay,
                     email: widget.email,
                     spesialis: widget.spesialis,
                     index: widget.index,
+                    isSelected: lastOptionSelected == widget.option1,
                   ),
                 )
               : const SizedBox(),
@@ -72,17 +75,18 @@ class _QuizPlayTileState extends State<QuizPlayTile> {
               ? GestureDetector(
                   onTap: () {
                     setState(() {
-                      widget.optionSelectedPlay = widget.option2!;
+                      lastOptionSelected = widget.option2;
                     });
+                    widget.optionSelectedPlay = widget.option2!;
                   },
                   child: OptionTile(
                     question: widget.questionPlay,
                     description: widget.option2,
-                    option: "B",
                     optionSelected: widget.optionSelectedPlay,
                     email: widget.email,
                     spesialis: widget.spesialis,
                     index: widget.index,
+                    isSelected: lastOptionSelected == widget.option2,
                   ),
                 )
               : const SizedBox(),
@@ -91,17 +95,18 @@ class _QuizPlayTileState extends State<QuizPlayTile> {
               ? GestureDetector(
                   onTap: () {
                     setState(() {
-                      widget.optionSelectedPlay = widget.option3!;
+                      lastOptionSelected = widget.option3;
                     });
+                    widget.optionSelectedPlay = widget.option3!;
                   },
                   child: OptionTile(
                     question: widget.questionPlay,
                     description: widget.option3,
-                    option: "C",
                     optionSelected: widget.optionSelectedPlay,
                     email: widget.email,
                     spesialis: widget.spesialis,
                     index: widget.index,
+                    isSelected: lastOptionSelected == widget.option3,
                   ),
                 )
               : const SizedBox(),
@@ -110,17 +115,18 @@ class _QuizPlayTileState extends State<QuizPlayTile> {
               ? GestureDetector(
                   onTap: () {
                     setState(() {
-                      widget.optionSelectedPlay = widget.option4!;
+                      lastOptionSelected = widget.option4;
                     });
+                    widget.optionSelectedPlay = widget.option4!;
                   },
                   child: OptionTile(
                     question: widget.questionPlay,
                     description: widget.option4,
-                    option: "D",
                     optionSelected: widget.optionSelectedPlay,
                     email: widget.email,
                     spesialis: widget.spesialis,
                     index: widget.index,
+                    isSelected: lastOptionSelected == widget.option4,
                   ),
                 )
               : const SizedBox(),
@@ -129,17 +135,18 @@ class _QuizPlayTileState extends State<QuizPlayTile> {
               ? GestureDetector(
                   onTap: () {
                     setState(() {
-                      widget.optionSelectedPlay = widget.option5!;
+                      lastOptionSelected = widget.option5;
                     });
+                    widget.optionSelectedPlay = widget.option5!;
                   },
                   child: OptionTile(
                     question: widget.questionPlay,
                     description: widget.option5,
-                    option: "E",
                     optionSelected: widget.optionSelectedPlay,
                     email: widget.email,
                     spesialis: widget.spesialis,
                     index: widget.index,
+                    isSelected: lastOptionSelected == widget.option5,
                   ),
                 )
               : const SizedBox(),

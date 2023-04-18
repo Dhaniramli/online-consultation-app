@@ -24,6 +24,12 @@ class CsQuizController extends GetxController {
   late Stream quizStream;
   late int jumlahData;
 
+  String? option1SelectedPlay;
+  String? option2SelectedPlay;
+  String? option3SelectedPlay;
+  String? option4SelectedPlay;
+  String? option5SelectedPlay;
+
   Stream<QuerySnapshot<Map<String, dynamic>>> spesialisData(String spesialis) {
     return firestore
         .collection("quiz")
