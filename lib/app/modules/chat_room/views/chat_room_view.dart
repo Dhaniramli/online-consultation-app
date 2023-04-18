@@ -24,7 +24,7 @@ class ChatRoomView extends GetView<ChatRoomController> {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(ChatRoomController());
-    // final UserController userController = Get.put(UserController());
+    final UserController userController = Get.put(UserController());
     controller.userMapC = userMap;
 
     PreferredSize header() {
