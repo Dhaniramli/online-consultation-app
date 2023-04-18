@@ -135,22 +135,25 @@ class LoginView extends GetView<LoginController> {
     return Scaffold(
       backgroundColor: bgColor1,
       resizeToAvoidBottomInset: false,
-      body: controller.isLoadingC == true
-          ? LoadingView()
-          : SafeArea(
-              child: Container(
-              margin: const EdgeInsets.only(left: 15, right: 15),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  type == "patient" ? titlePasien() : titleDokter(),
-                  emailInput(),
-                  passwordInput(),
-                  buttonMasuk(),
-                  regist()
-                ],
+      body: Obx(
+        () => controller.isLoadingC == true
+            ? LoadingView()
+            : SafeArea(
+                child: Container(
+                  margin: const EdgeInsets.only(left: 15, right: 15),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      type == "patient" ? titlePasien() : titleDokter(),
+                      emailInput(),
+                      passwordInput(),
+                      buttonMasuk(),
+                      regist()
+                    ],
+                  ),
+                ),
               ),
-            )),
+      ),
     );
   }
 }

@@ -74,21 +74,26 @@ class ChangePassView extends GetView<ChangePassController> {
             ),
           ),
           const SizedBox(height: 30),
-          TextButton(
+          Container(
+            height: 56,
+            width: double.infinity,
+            margin: const EdgeInsets.only(top: 20),
+            child: TextButton(
               onPressed: () {
                 controller.changePass();
               },
               style: TextButton.styleFrom(
-                  backgroundColor: primaryColor,
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 19, horizontal: 163),
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8))),
+                backgroundColor: primaryColor,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8)),
+              ),
               child: Text(
                 'Ubah',
                 style:
-                    textWhiteStyle.copyWith(fontSize: 15, fontWeight: medium),
-              ))
+                    textWhiteStyle.copyWith(fontSize: 19, fontWeight: semiBold),
+              ),
+            ),
+          ),
         ],
       );
     }

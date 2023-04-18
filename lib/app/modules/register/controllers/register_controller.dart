@@ -80,9 +80,9 @@ class RegisterController extends GetxController {
           await userCredential.user!.sendEmailVerification();
           print("REGISTER BERHASIL");
           isLoadingC = false;
+          Get.back();
           print("${typeC}");
 
-          Get.back();
         }
       } on FirebaseAuthException catch (e) {
         if (e.code == 'weak-password') {

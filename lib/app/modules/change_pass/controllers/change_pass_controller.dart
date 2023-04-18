@@ -31,19 +31,21 @@ class ChangePassController extends GetxController {
           email: currentUser,
           password: oldPasswordC.text,
         );
-        await currentUserC!.reauthenticateWithCredential(cred).then((value) {
-          currentUserC!.updatePassword(newPasswordC.text);
-        });
+        await currentUserC!.reauthenticateWithCredential(cred).then(
+          (value) {
+            currentUserC!.updatePassword(newPasswordC.text);
+          },
+        );
         Get.snackbar("Sukses", "Password Berhasil DiUbah");
         oldPasswordC.clear();
         newPasswordC.clear();
-        Get.back();
-      } on Exception catch (err) {
+      } catch (err) {
         print(err);
         Get.snackbar("Terjadi Kesalahan", "Tidak Dapat Mengubah Password");
       }
     } else {
-      Get.snackbar("Terjadi Kesalahan", "Sandi Lama dan Sandi Baru Harus Di Isi");
+      Get.snackbar(
+          "Terjadi Kesalahan", "Sandi Lama dan Sandi Baru Harus Di Isi");
     }
   }
 }
