@@ -7,18 +7,12 @@ import '../../controllers/cs_quiz_controller.dart';
 class OptionTile extends StatelessWidget {
   final String? question;
   final String? description;
-  final String optionSelected;
-  final String? email;
-  final String? spesialis;
   final int? index;
   final bool isSelected;
 
   OptionTile({
     required this.question,
     this.description,
-    required this.optionSelected,
-    this.email,
-    this.spesialis,
     this.index,
     this.isSelected = false,
   });

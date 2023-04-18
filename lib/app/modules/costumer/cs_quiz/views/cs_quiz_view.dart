@@ -54,13 +54,6 @@ class _CsQuizViewState extends State<CsQuizView> {
                 Map<String, dynamic> item =
                     (data.docs[index].data() as Map<String, dynamic>);
                 item["id"] = data.docs[index].id;
-                List<String> options = [
-                  item['opsi1'] ?? "",
-                  item['opsi2'] ?? "",
-                  item['opsi3'] ?? "",
-                  item['opsi4'] ?? "",
-                  item['opsi5'] ?? "",
-                ];
 
                 options.shuffle();
 
@@ -70,11 +63,11 @@ class _CsQuizViewState extends State<CsQuizView> {
                   questionPlay: item['pertanyaan'],
                   descriptionPlay: description,
                   optionSelectedPlay: optionSelected,
-                  option1: options[0],
-                  option2: options[1],
-                  option3: options[2],
-                  option4: options[3],
-                  option5: options[4],
+                  option1: item['opsi1'] ?? "",
+                  option2: item['opsi2'] ?? "",
+                  option3: item['opsi3'] ?? "",
+                  option4: item['opsi4'] ?? "",
+                  option5: item['opsi5'] ?? "",
                   email: currentUser,
                   spesialis: widget.userMap["spesialis"],
                   index: nomor,

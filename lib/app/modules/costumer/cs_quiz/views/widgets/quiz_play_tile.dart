@@ -69,9 +69,6 @@ class _QuizPlayTileState extends State<QuizPlayTile> {
                   child: OptionTile(
                     question: widget.questionPlay,
                     description: widget.option1,
-                    optionSelected: widget.optionSelectedPlay,
-                    email: widget.email,
-                    spesialis: widget.spesialis,
                     index: widget.index,
                     isSelected: lastOptionSelected == widget.option1,
                   ),
@@ -96,9 +93,6 @@ class _QuizPlayTileState extends State<QuizPlayTile> {
                   child: OptionTile(
                     question: widget.questionPlay,
                     description: widget.option2,
-                    optionSelected: widget.optionSelectedPlay,
-                    email: widget.email,
-                    spesialis: widget.spesialis,
                     index: widget.index,
                     isSelected: lastOptionSelected == widget.option2,
                   ),
@@ -123,9 +117,6 @@ class _QuizPlayTileState extends State<QuizPlayTile> {
                   child: OptionTile(
                     question: widget.questionPlay,
                     description: widget.option3,
-                    optionSelected: widget.optionSelectedPlay,
-                    email: widget.email,
-                    spesialis: widget.spesialis,
                     index: widget.index,
                     isSelected: lastOptionSelected == widget.option3,
                   ),
@@ -150,9 +141,6 @@ class _QuizPlayTileState extends State<QuizPlayTile> {
                   child: OptionTile(
                     question: widget.questionPlay,
                     description: widget.option4,
-                    optionSelected: widget.optionSelectedPlay,
-                    email: widget.email,
-                    spesialis: widget.spesialis,
                     index: widget.index,
                     isSelected: lastOptionSelected == widget.option4,
                   ),
@@ -177,9 +165,6 @@ class _QuizPlayTileState extends State<QuizPlayTile> {
                   child: OptionTile(
                     question: widget.questionPlay,
                     description: widget.option5,
-                    optionSelected: widget.optionSelectedPlay,
-                    email: widget.email,
-                    spesialis: widget.spesialis,
                     index: widget.index,
                     isSelected: lastOptionSelected == widget.option5,
                   ),
